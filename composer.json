@@ -1,0 +1,21 @@
+{
+  "name": "devclick-technology/yn-core",
+  "description": "Core code for yn projects",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "sagarnaliyapara",
+      "email": "naliyaparaspn@gmail.com"
+    }
+  ],
+  "require": {
+    "php" : "^8.1",
+    "illuminate/database" : "^8.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "YouNegotiate\\": "src/"
+    }
+  }
+}
