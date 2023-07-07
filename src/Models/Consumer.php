@@ -1,0 +1,80 @@
+<?php
+
+namespace YouNegotiate\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use YouNegotiate\Models\Interfaces\IConsumer;
+
+class Consumer extends Model implements IConsumer
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'company_id',
+        'sub_client1_id',
+        'sub_client1_name',
+        'sub_client2_id',
+        'sub_client2_name',
+        'reference_number',
+        'account_number',
+        'unique_customer_id',
+        'full_ssn',
+        'last4ssn',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'dob',
+        'gender',
+        'address1',
+        'address2',
+        'city',
+        'state',
+        'zip',
+        'mobile1',
+        'mobile2',
+        'mobile3',
+        'land1',
+        'land2',
+        'land3',
+        'email1',
+        'email2',
+        'email3',
+        'total_balance',
+        'principle_balance',
+        'fees_balance',
+        'daily_interest_add',
+        'monthly_interest_add',
+        'current_balance',
+        'min_one_time_percent',
+        'pif_discount_balance',
+        'pif_discount_percent',
+        'negotiation_rule',
+        'pay_setup_discount_percent',
+        'min_monthly_pay_percent',
+        'min_monthly_pay_amount',
+        'max_days_first_pay',
+        'pass_through1',
+        'pass_through2',
+        'pass_through3',
+        'pass_through4',
+        'pass_through5',
+        'ppa_amount',
+        'counter_monthly_amount',
+        'counter_first_pay_date',
+        'counter_pif_amount',
+        'counter_ppa_amount',
+        'offer_accepted',
+        'accrued_interest_rate',
+        'account_open_date',
+        'placement_date',
+        'expiry_date',
+        'token',
+        'communication_status_code',
+        'cfpb_communication',
+        'cfpb_file_name',
+        'amounts_in_interest',
+        'amounts_in_fees',
+        'ammounts_in_debt',
+    ];
+}
