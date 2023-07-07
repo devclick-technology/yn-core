@@ -5,8 +5,6 @@ namespace YouNegotiate\Models\Interfaces;
 use Illuminate\Support\Carbon;
 
 /**
- * App\Eletter
- *
  * @property int $id
  * @property int|null $company_id
  * @property int|null $group_id
