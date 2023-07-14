@@ -16,4 +16,9 @@ class ConsumerLog extends Model implements IConsumerLog
         'created_at',
         'updated_at',
     ];
+
+    public function consumer()
+    {
+        return $this->belongsTo(Consumer::class, 'consumer_id', 'id');
+    }
 }

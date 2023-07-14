@@ -11,4 +11,9 @@ class CompanyTerm extends Model implements ICompanyTerm
     use SoftDeletes;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

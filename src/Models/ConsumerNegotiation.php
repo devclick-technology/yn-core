@@ -35,4 +35,9 @@ class ConsumerNegotiation extends Model implements IConsumerNegotiation
         'counter_offer_accepted',
         'approved_by',
     ];
+
+    public function consumer()
+    {
+        return $this->belongsTo(Consumer::class);
+    }
 }

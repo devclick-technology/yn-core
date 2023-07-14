@@ -23,4 +23,9 @@ class ConsumerActivity extends Model implements IConsumerActivity
         'event_title',
         'event_desc',
     ];
+
+    public function consumer()
+    {
+        return $this->belongsTo(Consumer::class, 'consumer_id', 'id');
+    }
 }

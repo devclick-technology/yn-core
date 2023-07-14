@@ -10,4 +10,9 @@ class CustomStyle extends Model implements ICustomStyle
     protected $fillable = [
         'company_id', 'logo_path', 'bg_color', 'button_color', 'font_color',
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
