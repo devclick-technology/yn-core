@@ -207,25 +207,55 @@ class Consumer extends Model implements IConsumer
         return $account_contact_full_name;
     }
 
-    public function getMerchant()
+    public function getMerchant($type = null)
     {
         if ($this->sub_client2_id) {
-            $select_merchant = Merchant::join('subclients', 'merchants.subclient_id', 'subclients.id')->where('subclient_id', $this->sub_client2_id)->where('subclients.default_payment_account', 1)->select('merchants.*')->first();
+            $select_merchant = Merchant::query()
+                ->join('subclients', 'merchants.subclient_id', 'subclients.id')
+                ->where('subclient_id', $this->sub_client2_id)
+                ->where('subclients.default_payment_account', 1)
+                ->when($type, fn($q) => $q->where('merchant_type', $type))
+                ->select('merchants.*')
+                ->first();
             if (! $select_merchant) {
-                $select_merchant = Merchant::join('subclients', 'merchants.subclient_id', 'subclients.id')->where('subclient_id', $this->sub_client1_id)->where('subclients.default_payment_account', 1)->select('merchants.*')->first();
+                $select_merchant = Merchant::query()
+                    ->join('subclients', 'merchants.subclient_id', 'subclients.id')
+                    ->where('subclient_id', $this->sub_client1_id)
+                    ->where('subclients.default_payment_account', 1)
+                    ->select('merchants.*')
+                    ->when($type, fn($q) => $q->where('merchant_type', $type))
+                    ->first();
 
                 if (! $select_merchant) {
-                    $select_merchant = Merchant::where('company_id', $this->company_id)->whereNull('subclient_id')->first();
+                    $select_merchant = Merchant::query()
+                        ->where('company_id', $this->company_id)
+                        ->whereNull('subclient_id')
+                        ->when($type, fn($q) => $q->where('merchant_type', $type))
+                        ->first();
                 }
             }
         } elseif ($this->sub_client1_id) {
-            $select_merchant = Merchant::join('subclients', 'merchants.subclient_id', 'subclients.id')->where('subclient_id', $this->sub_client1_id)->where('subclients.default_payment_account', 1)->select('merchants.*')->first();
+            $select_merchant = Merchant::query()
+                ->join('subclients', 'merchants.subclient_id', 'subclients.id')
+                ->where('subclient_id', $this->sub_client1_id)
+                ->where('subclients.default_payment_account', 1)
+                ->select('merchants.*')
+                ->when($type, fn($q) => $q->where('merchant_type', $type))
+                ->first();
 
             if (! $select_merchant) {
-                $select_merchant = Merchant::where('company_id', $this->company_id)->whereNull('subclient_id')->first();
+                $select_merchant = Merchant::query()
+                    ->where('company_id', $this->company_id)
+                    ->whereNull('subclient_id')
+                    ->when($type, fn($q) => $q->where('merchant_type', $type))
+                    ->first();
             }
         } elseif ($this->company_id) {
-            $select_merchant = Merchant::where('company_id', $this->company_id)->whereNull('subclient_id')->first();
+            $select_merchant = Merchant::query()
+                ->where('company_id', $this->company_id)
+                ->whereNull('subclient_id')
+                ->when($type, fn($q) => $q->where('merchant_type', $type))
+                ->first();
         }
 
         return $select_merchant ?? null;
@@ -233,7 +263,7 @@ class Consumer extends Model implements IConsumer
 
     public function getccMerchant()
     {
-        $merchant = $this->getMerchant();
+        $merchant = $this->getMerchant('cc');
         if ($merchant->merchant_type == 'cc') {
             $select_merchant = $merchant;
 
@@ -243,7 +273,7 @@ class Consumer extends Model implements IConsumer
 
     public function getachMerchant()
     {
-        $merchant = $this->getMerchant();
+        $merchant = $this->getMerchant('ach');
         if ($merchant->merchant_type == 'ach') {
             $select_merchant = $merchant;
 
