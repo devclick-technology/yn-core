@@ -14,7 +14,7 @@ class Eletter extends Model implements IEletter
 
     public function campaigns()
     {
-        return $this->hasMany(\App\Models\Campaign::class);
+        return $this->hasMany(Campaign::class);
     }
 
     public function getType()

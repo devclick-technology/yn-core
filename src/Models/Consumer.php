@@ -689,12 +689,12 @@ class Consumer extends Model implements IConsumer
 
     public function unsubscription()
     {
-        return $this->hasOne(\App\Models\ConsumerUnsubscription::class);
+        return $this->hasOne(ConsumerUnsubscription::class);
     }
 
     public function scheduledTransactions()
     {
-        return $this->hasMany(\App\Models\ScheduleTransaction::class);
+        return $this->hasMany(ScheduleTransaction::class);
     }
 
     public function emailSubscribed()

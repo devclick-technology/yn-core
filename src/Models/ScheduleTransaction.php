@@ -5,6 +5,7 @@ namespace YouNegotiate\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Interfaces\IScheduleTransaction;
 
 class ScheduleTransaction extends Model implements IScheduleTransaction
@@ -73,7 +74,7 @@ class ScheduleTransaction extends Model implements IScheduleTransaction
 
     public function ScheduleStripe($merchant, $schedule, $date, $installment_type)
     {
-        $stripe = new Stripe\StripeClient(
+        $stripe = new \Stripe\StripeClient(
             $merchant->stripe_secret_key
         );
         $StripePaymentDetail = StripePaymentDetail::find($schedule->stripe_payment_detail_id);
@@ -116,7 +117,7 @@ class ScheduleTransaction extends Model implements IScheduleTransaction
 
     public function CancelStripeSubscription($stripe_payment_detail_id, $merchant)
     {
-        $stripe = new Stripe\StripeClient(
+        $stripe = new \Stripe\StripeClient(
             $merchant->stripe_secret_key
         );
         $row_prev_sub = StripePaymentDetail::find($stripe_payment_detail_id);
