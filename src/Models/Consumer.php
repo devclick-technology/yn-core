@@ -263,23 +263,12 @@ class Consumer extends Model implements IConsumer
 
     public function getccMerchant()
     {
-        $merchant = $this->getMerchant('cc');
-        if ($merchant->merchant_type == 'cc') {
-            $select_merchant = $merchant;
-
-            return $select_merchant;
-        }
+        return $this->getMerchant('cc');
     }
 
     public function getachMerchant()
     {
-        $merchant = $this->getMerchant('ach');
-        if ($merchant->merchant_type == 'ach') {
-            $select_merchant = $merchant;
-
-            return $select_merchant;
-        }
-
+        return $this->getMerchant('ach');
     }
 
     public function getActualSubclient1Name()
