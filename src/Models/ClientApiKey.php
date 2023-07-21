@@ -12,4 +12,9 @@ class ClientApiKey extends Model implements IClientApiKey
     protected $fillable = [
         'company_id', 'api_key',
     ];
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }
