@@ -35,6 +35,8 @@ class ConsumerNegotiation extends Model implements IConsumerNegotiation
         'counter_negotiate_amount',
         'offer_accepted',
         'counter_offer_accepted',
+        'payment_plan_current_balance',
+        'old_payment_plan_current_balance',
         'approved_by',
     ];
 
