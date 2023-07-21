@@ -32,6 +32,7 @@ class ScheduleTransaction extends Model implements IScheduleTransaction
         'attempt_count',
         'last_attempted_at',
         'transaction_type',
+        'payment_complete',
     ];
 
     public function consumer()
