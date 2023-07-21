@@ -4,6 +4,8 @@ namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use YouNegotiate\Models\Interfaces\IConsumerNegotiation;
 
 class ConsumerNegotiation extends Model implements IConsumerNegotiation
@@ -36,8 +38,13 @@ class ConsumerNegotiation extends Model implements IConsumerNegotiation
         'approved_by',
     ];
 
-    public function consumer()
+    public function consumer(): BelongsTo
     {
         return $this->belongsTo(Consumer::class);
+    }
+
+    public function scheduleTransactions(): HasMany
+    {
+        return $this->hasMany(ScheduleTransaction::class, 'consumer_id', 'consumer_id');
     }
 }
