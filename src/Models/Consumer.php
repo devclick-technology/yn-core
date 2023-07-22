@@ -585,7 +585,7 @@ class Consumer extends Model implements IConsumer
 
             //$json = file_get_contents("https://cutt.ly/api/api.php?key=768de173a8247017159509533f1ca077b0c49&short=".$surl);
 
-            $json = file_get_contents('http://yng.link/api.php?key=47ow042ax9338amxhqp&short='
+            $json = file_get_contents('http://yneg.link/api.php?key=47ow042ax9338amxhqp&short='
                 .$surl);
 
             $data = json_decode($json, true);
@@ -594,7 +594,7 @@ class Consumer extends Model implements IConsumer
         } else {
             $surl = 'https://consumer.younegotiate.com/login?token='.$this->token;
             //$json = file_get_contents("https://cutt.ly/api/api.php?key=768de173a8247017159509533f1ca077b0c49&short=".$surl);
-            $json = file_get_contents('http://yng.link/api.php?key=47ow042ax9338amxhqp&short='.$surl);
+            $json = file_get_contents('http://yneg.link/api.php?key=47ow042ax9338amxhqp&short='.$surl);
             $data = json_decode($json, true);
 
             return $data['url']['shortLink'];
@@ -620,7 +620,7 @@ class Consumer extends Model implements IConsumer
         $last = $randomString2;
 
         $short_tag = $first.$consumer_id.$last;
-        $shortlink = 'https://yng.link/'.$short_tag;
+        $shortlink = 'https://yneg.link/'.$short_tag;
 
         return $shortlink;
     }
