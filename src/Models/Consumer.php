@@ -575,34 +575,7 @@ class Consumer extends Model implements IConsumer
         return $min_pay_in_full;
     }
 
-    public function invitationLink()
-    {
-        $personalizedLogo = PersonalizedLogo::where('company_id', $this->company->id)->first();
-
-        if ($personalizedLogo->customer_communication_link) {
-            $surl = 'https://'.$personalizedLogo->customer_communication_link.'.younegotiate.com/login?token='.$this->token;
-
-            //add 29-06-2020 for short url
-
-            //$json = file_get_contents("https://cutt.ly/api/api.php?key=768de173a8247017159509533f1ca077b0c49&short=".$surl);
-
-            $json = file_get_contents('http://yneg.link/api.php?key=47ow042ax9338amxhqp&short='
-                .$surl);
-
-            $data = json_decode($json, true);
-
-            return $data['url']['shortLink'];
-        } else {
-            $surl = 'https://consumer.younegotiate.com/login?token='.$this->token;
-            //$json = file_get_contents("https://cutt.ly/api/api.php?key=768de173a8247017159509533f1ca077b0c49&short=".$surl);
-            $json = file_get_contents('http://yneg.link/api.php?key=47ow042ax9338amxhqp&short='.$surl);
-            $data = json_decode($json, true);
-
-            return $data['url']['shortLink'];
-        }
-    }
-
-    public function shortLink()
+    public function shortLink(): string
     {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
@@ -621,12 +594,10 @@ class Consumer extends Model implements IConsumer
         $last = $randomString2;
 
         $short_tag = $first.$consumer_id.$last;
-        $shortlink = 'https://yneg.link/'.$short_tag;
-
-        return $shortlink;
+        return 'https://yneg.link/'.$short_tag;
     }
 
-    public function saveInvitationLink()
+    public function saveInvitationLink(): void
     {
         $this->invitation_link = $this->shortLink();
         $this->save();
