@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 use YouNegotiate\Models\Interfaces\IConsumer;
+use Illuminate\Notifications\Notifiable;
 
 class Consumer extends Model implements IConsumer
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'company_id',
@@ -863,6 +864,11 @@ class Consumer extends Model implements IConsumer
         } catch (\throwable $e) {
             dump($e);
         }
+    }
+
+    public function routeNotificationForMail($notification)
+    {
+        return $this->email1;
     }
 
 }
