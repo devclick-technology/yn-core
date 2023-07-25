@@ -101,9 +101,9 @@ class Consumer extends Model implements IConsumer
         return $this->hasOne(PaymentProfile::class, 'consumer_id');
     }
 
-    public function consumer_negotiation()
+    public function consumer_negotiation(): HasOne
     {
-        return $this->belongsTo(ConsumerNegotiation::class);
+        return $this->hasOne(ConsumerNegotiation::class);
     }
 
     public function getFullNameAttribute()
