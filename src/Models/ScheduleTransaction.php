@@ -20,6 +20,8 @@ class ScheduleTransaction extends Model implements IScheduleTransaction
         'sub_client2_id',
         'payment_profile_id',
         'schedule_date',
+        'schedule_time',
+        'previous_schedule_date',
         'status',
         'status_code',
         'amount',
@@ -33,6 +35,9 @@ class ScheduleTransaction extends Model implements IScheduleTransaction
         'last_attempted_at',
         'transaction_type',
         'payment_complete',
+        'stripe_payment_detail_id',
+        'gateway_respnse_raw',
+        'negotiation_type',
     ];
 
     public function consumer()
