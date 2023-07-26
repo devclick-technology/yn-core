@@ -5,11 +5,13 @@ namespace YouNegotiate\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\IPaymentProfile;
 
 class PaymentProfile extends Model implements IPaymentProfile
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'consumer_id',
