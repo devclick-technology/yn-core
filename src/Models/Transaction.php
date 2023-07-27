@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use YouNegotiate\Models\Interfaces\ITransaction;
 
@@ -81,5 +82,10 @@ class Transaction extends Model implements ITransaction
     public function scheduleTransaction(): HasOne
     {
         return $this->hasOne(ScheduleTransaction::class, 'transaction_id', 'transaction_id');
+    }
+
+    public function paymentProfileWithTrash(): BelongsTo
+    {
+        return $this->belongsTo(PaymentProfile::class, 'payment_profile_id')->withTrashed();
     }
 }
