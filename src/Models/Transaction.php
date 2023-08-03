@@ -17,7 +17,7 @@ class Transaction extends Model implements ITransaction
 
     protected $appends = ['rnn_share_amount'];
 
-    public function consumer()
+    public function consumer(): BelongsTo
     {
         return $this->belongsTo(Consumer::class, 'consumer_id', 'id');
     }

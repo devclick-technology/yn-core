@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use YouNegotiate\Models\Interfaces\IConsumerLog;
 
 class ConsumerLog extends Model implements IConsumerLog
@@ -17,7 +18,7 @@ class ConsumerLog extends Model implements IConsumerLog
         'updated_at',
     ];
 
-    public function consumer()
+    public function consumer(): BelongsTo
     {
         return $this->belongsTo(Consumer::class, 'consumer_id', 'id');
     }

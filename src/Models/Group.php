@@ -2,6 +2,7 @@
 
 namespace YouNegotiate\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use YouNegotiate\Traits\CompanyIDTrait;
 use YouNegotiate\Traits\CreatedByTrait;
 use Illuminate\Database\Eloquent\Model;
@@ -202,7 +203,7 @@ class Group extends Model implements IGroup
         return $this->membersQuery($company_id ?? auth()->user()->company_id ?? 0)->selectRaw('sum(current_balance) as total_balance')->first()->total_balance;
     }
 
-    public function campaigns()
+    public function campaigns(): HasMany
     {
         return $this->hasMany(Campaign::class);
     }

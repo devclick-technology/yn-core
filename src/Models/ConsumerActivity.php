@@ -2,6 +2,7 @@
 
 namespace YouNegotiate\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use YouNegotiate\Traits\CompanyIDTrait;
 use Illuminate\Database\Eloquent\Model;
 use YouNegotiate\Models\Interfaces\IConsumerActivity;
@@ -24,7 +25,7 @@ class ConsumerActivity extends Model implements IConsumerActivity
         'event_desc',
     ];
 
-    public function consumer()
+    public function consumer(): BelongsTo
     {
         return $this->belongsTo(Consumer::class, 'consumer_id', 'id');
     }

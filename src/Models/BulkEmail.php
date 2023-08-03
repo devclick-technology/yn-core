@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\IBulkEmail;
 
@@ -12,17 +13,17 @@ class BulkEmail extends Model implements IBulkEmail
 
     protected $fillable = ['name', 'template_id', 'group_id'];
 
-    public function template()
+    public function template(): BelongsTo
     {
         return $this->belongsTo(Template::class, 'template_id', 'id');
     }
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 
-    public function group()
+    public function group(): BelongsTo
     {
         return $this->belongsTo(Group::class, 'group_id', 'id');
     }

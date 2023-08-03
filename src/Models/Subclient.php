@@ -2,6 +2,8 @@
 
 namespace YouNegotiate\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use YouNegotiate\Traits\CompanyIDTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,12 +36,12 @@ class Subclient extends Model implements ISubclient
         return $this->only(['id', 'pif_balance_discount_percent', 'ppa_balance_discount_percent', 'min_monthly_pay_percent', 'max_days_first_pay']);
     }
 
-    public function parent()
+    public function parent(): BelongsTo
     {
         return $this->belongsTo(Subclient::class, 'parent_id', 'id')->withDefault();
     }
 
-    public function merchant()
+    public function merchant(): HasOne
     {
         return $this->hasOne(Merchant::class, 'company_id', 'company_id')->where('subclient_id', $this->id)->withDefault(['merchant_name' => '']);
     }

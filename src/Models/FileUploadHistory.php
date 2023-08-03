@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use YouNegotiate\Models\Interfaces\IFileUploadHistory;
 
 class FileUploadHistory extends Model implements IFileUploadHistory
@@ -17,7 +18,7 @@ class FileUploadHistory extends Model implements IFileUploadHistory
         return $this->processed_count + $this->failed_count;
     }
 
-    public function failed_consumers()
+    public function failed_consumers(): HasMany
     {
         return $this->hasMany(FailedFileUploadConsumer::class, 'file_upload_histories_id');
     }

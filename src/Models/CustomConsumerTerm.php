@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use YouNegotiate\Models\Interfaces\ICustomConsumerTerm;
 
 class CustomConsumerTerm extends Model implements ICustomConsumerTerm
@@ -11,7 +12,7 @@ class CustomConsumerTerm extends Model implements ICustomConsumerTerm
         'company_id', 'sub_client1_id', 'sub_client2_id', 'term_type', 'term_value', 'one_time_rule', 'min_one_time_percent', 'monthly_pay_percent', 'max_negotiation_discount_percent', 'pif_discount_percent', 'master_negotiation_rule',
     ];
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }

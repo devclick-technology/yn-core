@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use YouNegotiate\Models\Interfaces\IClientApiKey;
 
 class ClientApiKey extends Model implements IClientApiKey
@@ -13,7 +14,7 @@ class ClientApiKey extends Model implements IClientApiKey
         'company_id', 'api_key',
     ];
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }

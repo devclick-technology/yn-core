@@ -3,6 +3,8 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\IAutomatedTemplate;
 
@@ -12,7 +14,7 @@ class AutomatedTemplate extends Model implements IAutomatedTemplate
 
     protected $guarded = ['id', 'created_at', 'updated_at', 'created_by'];
 
-    public function createdBy()
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by', 'id')->withDefault(['name' => $this->created_by]);
     }
@@ -22,12 +24,12 @@ class AutomatedTemplate extends Model implements IAutomatedTemplate
         return $this->belongsTo(AutomatedCampaign::class);
     }
 
-    public function emailTemplate()
+    public function emailTemplate(): HasOne
     {
         return $this->hasOne(CommunicationStatus::class, 'aet_id');
     }
 
-    public function smsTemplate()
+    public function smsTemplate(): HasOne
     {
         return $this->hasOne(CommunicationStatus::class, 'ast_id');
     }

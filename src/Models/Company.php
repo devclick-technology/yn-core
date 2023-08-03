@@ -5,6 +5,8 @@ namespace YouNegotiate\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\ICompany;
 
@@ -45,7 +47,7 @@ class Company extends Model implements ICompany
         return 'Company';
     }
 
-    public function subclients()
+    public function subclients(): HasMany
     {
         return $this->hasMany(Subclient::class, 'company_id', 'id');
     }
@@ -55,22 +57,22 @@ class Company extends Model implements ICompany
         return $this->belongsTo(Company::class, 'parent_id', 'id');
     }
 
-    public function templates()
+    public function templates(): HasMany
     {
         return $this->hasMany(Template::class);
     }
 
-    public function Activetemplates()
+    public function Activetemplates(): HasMany
     {
         return $this->hasMany(Template::class)->where('enabled', 1);
     }
 
-    public function custom_style()
+    public function custom_style(): HasOne
     {
         return $this->hasOne(CustomStyle::class);
     }
 
-    public function companyTerm()
+    public function companyTerm(): HasOne
     {
         return $this->hasOne(CompanyTerm::class);
     }
@@ -80,17 +82,17 @@ class Company extends Model implements ICompany
         return $this->custom_style()->create(['company_id' => $this->id] + config('app.company.default_style'));
     }
 
-    public function consumers()
+    public function consumers(): HasMany
     {
         return $this->hasMany(Consumer::class);
     }
 
-    public function custom_contents()
+    public function custom_contents(): HasMany
     {
         return $this->hasMany(CustomContent::class);
     }
 
-    public function custom_consumer_terms()
+    public function custom_consumer_terms(): HasMany
     {
         return $this->hasMany(CustomConsumerTerm::class);
     }
@@ -100,17 +102,17 @@ class Company extends Model implements ICompany
         return $this->trashed() ? 'Deleted' : 'Active';
     }
 
-    public function sftpDetails()
+    public function sftpDetails(): HasOne
     {
         return $this->hasOne(SFTPDetails::class);
     }
 
-    public function apiKey()
+    public function apiKey(): HasOne
     {
         return $this->hasOne(ClientApiKey::class);
     }
 
-    public function user()
+    public function user(): HasOne
     {
         return $this->hasOne(User::class, 'company_id');
     }
@@ -281,12 +283,12 @@ class Company extends Model implements ICompany
         return 'https://'.$this->younegotiate_url.'.younegotiate.com';
     }
 
-    public function transaction()
+    public function transaction(): HasMany
     {
         return $this->hasMany(Transaction::class, 'company_id', 'id');
     }
 
-    public function campaigns()
+    public function campaigns(): HasMany
     {
         return $this->hasMany(Campaign::class);
     }

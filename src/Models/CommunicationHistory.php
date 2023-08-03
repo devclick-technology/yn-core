@@ -3,28 +3,29 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use YouNegotiate\Models\Interfaces\ICommunicationHistory;
 
 class CommunicationHistory extends Model implements ICommunicationHistory
 {
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
 
-    public function consumer()
+    public function consumer(): BelongsTo
     {
         return $this->belongsTo(Consumer::class)->withDefault(['full_name' => '']);
     }
 
-    public function group()
+    public function group(): BelongsTo
     {
         return $this->belongsTo(Group::class)->withDefault(['name' => '']);
     }
 
-    public function template()
+    public function template(): BelongsTo
     {
         return $this->belongsTo(Template::class)->withDefault(['name' => '', 'type' => '']);
     }

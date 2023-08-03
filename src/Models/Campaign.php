@@ -6,6 +6,7 @@ use App\Jobs\RunCampaignJob;
 use App\Jobs\SendEmailJob;
 use App\Jobs\SendSMSJob;
 use App\Mail\TemplateEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Log;
 use YouNegotiate\Traits\CompanyIDTrait;
 use YouNegotiate\Traits\CreatedByTrait;
@@ -23,17 +24,17 @@ class Campaign extends Model implements ICampaign
 
     protected $fillable = ['group_id', 'template_id'];
 
-    public function template()
+    public function template(): BelongsTo
     {
         return $this->belongsTo(Template::class);
     }
 
-    public function group()
+    public function group(): BelongsTo
     {
         return $this->belongsTo(Group::class);
     }
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }

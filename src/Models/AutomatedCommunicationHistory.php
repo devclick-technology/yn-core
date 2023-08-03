@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use YouNegotiate\Models\Interfaces\IAutomatedCommunicationHistory;
 
 class AutomatedCommunicationHistory extends Model implements IAutomatedCommunicationHistory
@@ -11,12 +12,12 @@ class AutomatedCommunicationHistory extends Model implements IAutomatedCommunica
 
     protected $table = 'automated_communication_histories';
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
 
-    public function consumer()
+    public function consumer(): BelongsTo
     {
         return $this->belongsTo(Consumer::class)->withDefault(['full_name' => '']);
     }

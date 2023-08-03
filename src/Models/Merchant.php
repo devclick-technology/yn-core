@@ -4,6 +4,7 @@ namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Log;
 use YouNegotiate\Models\Interfaces\IMerchant;
 use net\authorize\api\contract\v1 as AnetAPI;
@@ -16,12 +17,12 @@ class Merchant extends Model implements IMerchant
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 
-    public function subclient()
+    public function subclient(): BelongsTo
     {
         return $this->belongsTo(Subclient::class, 'subclient_id', 'id')->withDefault(['name' => '']);
     }

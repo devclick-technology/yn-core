@@ -4,6 +4,7 @@ namespace YouNegotiate\Models;
 
 use App\Jobs\RunAutomatedCampaignJob;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\IAutomatedCampaign;
 
@@ -19,22 +20,22 @@ class AutomatedCampaign extends Model implements IAutomatedCampaign
 
     protected $table = 'automated_campaigns';
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
 
-    public function emailTemplate()
+    public function emailTemplate(): BelongsTo
     {
         return $this->belongsTo(AutomatedTemplate::class, 'email_temp_id');
     }
 
-    public function smsTemplate()
+    public function smsTemplate(): BelongsTo
     {
         return $this->belongsTo(AutomatedTemplate::class, 'sms_temp_id');
     }
 
-    public function communicationStatus()
+    public function communicationStatus(): BelongsTo
     {
         return $this->belongsTo(CommunicationStatus::class, 'comm_status_id');
     }

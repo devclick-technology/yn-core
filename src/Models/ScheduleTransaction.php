@@ -40,7 +40,7 @@ class ScheduleTransaction extends Model implements IScheduleTransaction
         'negotiation_type',
     ];
 
-    public function consumer()
+    public function consumer(): BelongsTo
     {
         return $this->belongsTo(Consumer::class, 'consumer_id', 'id');
     }

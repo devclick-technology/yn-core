@@ -3,6 +3,8 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\ITemplate;
 use App\Models\User;
@@ -13,12 +15,12 @@ class Template extends Model implements ITemplate
 
     protected $guarded = ['id', 'created_at', 'updated_at', 'company_id', 'created_by', 'group_id'];
 
-    public function createdBy()
+    public function createdBy(): BelongsTo
     {
         return $this->belongsTo(User::class, 'created_by', 'id')->withDefault(['name' => $this->created_by]);
     }
 
-    public function campaigns()
+    public function campaigns(): HasMany
     {
         return $this->hasMany(Campaign::class);
     }

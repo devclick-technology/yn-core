@@ -13,12 +13,12 @@ class ScheduleExport extends Model implements IScheduleExport
 
     protected $guarded = [];
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
 
-    public function subclient()
+    public function subclient(): BelongsTo
     {
         return $this->belongsTo(Subclient::class);
     }

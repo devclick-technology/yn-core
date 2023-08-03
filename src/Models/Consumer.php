@@ -4,6 +4,8 @@ namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 use YouNegotiate\Models\Interfaces\IConsumer;
@@ -81,22 +83,22 @@ class Consumer extends Model implements IConsumer
         'ammounts_in_debt',
     ];
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 
-    public function subclient2()
+    public function subclient2(): BelongsTo
     {
         return $this->belongsTo(Subclient::class, 'sub_client2_id', 'id');
     }
 
-    public function subclient1()
+    public function subclient1(): BelongsTo
     {
         return $this->belongsTo(Subclient::class, 'sub_client1_id', 'id');
     }
 
-    public function paymentProfile()
+    public function paymentProfile(): HasOne
     {
         return $this->hasOne(PaymentProfile::class, 'consumer_id');
     }
@@ -151,18 +153,6 @@ class Consumer extends Model implements IConsumer
 
     public function getCompanyEmail()
     {
-        // if($this->sub_client2_id){
-        //     $subclient2 = Subclient::find($this->sub_client2_id);
-        //     $companyEmail = $subclient2->account_contact_email;
-        // }
-        // elseif($this->sub_client1_id){
-        //     $subclient1 = Subclient::find($this->sub_client1_id);
-        //     $companyEmail = $subclient1->account_contact_email;
-        // }
-        // else{
-        //     $companyEmail = $this->company->account_contact_email;
-        // }
-
         $companyEmail = $this->company->account_contact_email;
 
         return $companyEmail;
@@ -513,12 +503,12 @@ class Consumer extends Model implements IConsumer
         return 'https://'.$pl->customer_communication_link.'.younegotiate.com/unsubscribe';
     }
 
-    public function unsubscription()
+    public function unsubscription(): HasOne
     {
         return $this->hasOne(ConsumerUnsubscription::class);
     }
 
-    public function scheduledTransactions()
+    public function scheduledTransactions(): HasMany
     {
         return $this->hasMany(ScheduleTransaction::class);
     }
@@ -620,7 +610,7 @@ class Consumer extends Model implements IConsumer
         return url('consumer-profile', $this->id);
     }
 
-    public function communication_status()
+    public function communication_status(): BelongsTo
     {
         return $this->belongsTo(CommunicationStatus::class, 'communication_status_code', 'status_code');
     }
