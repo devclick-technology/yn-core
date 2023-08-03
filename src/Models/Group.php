@@ -207,14 +207,6 @@ class Group extends Model implements IGroup
         return $this->hasMany(Campaign::class);
     }
 
-    public function superAdminMembers($company_id = null, $subclient_id = null)
-    {
-        $company_id = $company_id ?? auth()->user()->company_id;
-        $subclient_id = $subclient_id ?? auth()->user()->subclient_id ?? null;
-
-        return $this->membersQuery($company_id, $subclient_id)->get();
-    }
-
     public function memberCount($company_id = null)
     {
         return $this->membersQuery($company_id, null)->count();

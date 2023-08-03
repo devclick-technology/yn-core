@@ -271,11 +271,6 @@ class Company extends Model implements ICompany
         $this->save();
     }
 
-    public function commissionRecipient()
-    {
-        return json_decode($this->send_commission);
-    }
-
     public function personalizedLogo()
     {
         return $this->belongsTo(PersonalizedLogo::class, 'company_id', 'id');
