@@ -2,11 +2,10 @@
 
 namespace YouNegotiate\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\IStripePaymentDetail;
 
-class StripePaymentDetail extends Model implements IStripePaymentDetail
+class StripePaymentDetail extends BaseModel implements IStripePaymentDetail
 {
     Use SoftDeletes;
 

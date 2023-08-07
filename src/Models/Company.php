@@ -4,15 +4,12 @@ namespace YouNegotiate\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\ICompany;
 
-class Company extends Model implements ICompany
+class Company extends BaseModel implements ICompany
 {
     use SoftDeletes, HasFactory;
-
-    protected $guarded = ['id', 'created_at', 'updated_at', 'status'];
 
     public function terms_condition()
     {

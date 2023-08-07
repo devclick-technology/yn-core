@@ -2,11 +2,10 @@
 
 namespace YouNegotiate\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use YouNegotiate\Models\Interfaces\ICreditorAutomation;
 
-class CreditorAutomation extends Model implements ICreditorAutomation
+class CreditorAutomation extends BaseModel implements ICreditorAutomation
 {
     protected $table = 'creditor_automations';
 

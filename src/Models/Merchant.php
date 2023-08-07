@@ -3,18 +3,15 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 use YouNegotiate\Models\Interfaces\IMerchant;
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
 use SoapClient;
 
-class Merchant extends Model implements IMerchant
+class Merchant extends BaseModel implements IMerchant
 {
     use HasFactory;
-
-    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function company()
     {

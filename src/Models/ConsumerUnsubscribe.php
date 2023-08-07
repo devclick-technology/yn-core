@@ -2,13 +2,10 @@
 
 namespace YouNegotiate\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use YouNegotiate\Models\Interfaces\IConsumerUnsubscribe;
 
-class ConsumerUnsubscribe extends Model implements IConsumerUnsubscribe
+class ConsumerUnsubscribe extends BaseModel implements IConsumerUnsubscribe
 {
-    protected $guarded = ['id', 'created_at', 'updated_at'];
-
     public function Consumer()
     {
         return $this->belongsTo(Consumer::class, 'consumer_id', 'id');

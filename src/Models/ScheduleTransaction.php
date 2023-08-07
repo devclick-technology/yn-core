@@ -3,42 +3,13 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Interfaces\IScheduleTransaction;
 
-class ScheduleTransaction extends Model implements IScheduleTransaction
+class ScheduleTransaction extends BaseModel implements IScheduleTransaction
 {
     use HasFactory;
-
-    protected $fillable = [
-        'consumer_id',
-        'consumer_login_id',
-        'company_id',
-        'sub_client1_id',
-        'sub_client2_id',
-        'payment_profile_id',
-        'schedule_date',
-        'schedule_time',
-        'previous_schedule_date',
-        'status',
-        'status_code',
-        'amount',
-        'processing_charges',
-        'flat_transaction_charges',
-        'rnn_share',
-        'company_share',
-        'subclient1_share',
-        'subclient2_share',
-        'attempt_count',
-        'last_attempted_at',
-        'transaction_type',
-        'payment_complete',
-        'stripe_payment_detail_id',
-        'gateway_respnse_raw',
-        'negotiation_type',
-    ];
 
     public function consumer()
     {
