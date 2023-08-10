@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Str;
 use YouNegotiate\Models\Interfaces\IConsumer;
@@ -773,4 +774,8 @@ class Consumer extends BaseModel implements IConsumer
         return $this->email1;
     }
 
+    public function consumerProfile(): BelongsTo
+    {
+        return $this->belongsTo(ConsumerProfile::class);
+    }
 }
