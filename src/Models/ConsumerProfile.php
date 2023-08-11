@@ -2,6 +2,8 @@
 
 namespace YouNegotiate\Models;
 
-class ConsumerProfile extends BaseModel
+use YouNegotiate\Models\Interfaces\IConsumerProfile;
+
+class ConsumerProfile extends BaseModel implements IConsumerProfile
 {
 }
