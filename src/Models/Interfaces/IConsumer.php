@@ -61,6 +61,10 @@ use Illuminate\Support\Carbon;
  * @property float|null $min_monthly_pay_percent
  * @property float|null $min_monthly_pay_amount
  * @property int|null $max_days_first_pay
+ * @property float|null $group_pif_discount_percent
+ * @property float|null $group_pay_setup_discount_percent
+ * @property float|null $group_min_monthly_pay_percent
+ * @property float|null $group_max_days_first_pay
  * @property string|null $pass_through1
  * @property string|null $pass_through2
  * @property string|null $pass_through3
