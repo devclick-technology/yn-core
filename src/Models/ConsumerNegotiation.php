@@ -20,4 +20,9 @@ class ConsumerNegotiation extends BaseModel implements IConsumerNegotiation
     {
         return $this->hasMany(ScheduleTransaction::class, 'consumer_id', 'consumer_id');
     }
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class, 'consumer_id', 'consumer_id');
+    }
 }
