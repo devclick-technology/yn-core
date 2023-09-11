@@ -10,6 +10,10 @@ use Illuminate\Support\Carbon;
  * @property string $name
  * @property float $price
  * @property string $description
+ * @property string $frequency
+ * @property float $price_per_email
+ * @property float $price_per_text
+ * @property float $fee
  * @property Json|null $meta_data
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
