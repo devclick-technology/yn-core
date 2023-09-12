@@ -7,5 +7,7 @@ use YouNegotiate\Models\Interfaces\ICompanyMembership;
 
 class CompanyMembership extends Model implements ICompanyMembership
 {
+    public $timestamps = false;
+
     protected $guarded = [];
 }
