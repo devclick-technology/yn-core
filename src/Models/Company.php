@@ -4,6 +4,7 @@ namespace YouNegotiate\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\ICompany;
 
@@ -371,5 +372,10 @@ class Company extends BaseModel implements ICompany
     public function isMcNeil(): bool
     {
         return $this->id == config('app.company.mcneil_id');
+    }
+
+    public function membership(): HasOne
+    {
+        return $this->hasOne(CompanyMembership::class);
     }
 }
