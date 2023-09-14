@@ -13,7 +13,9 @@ use Illuminate\Support\Carbon;
  * @property string $frequency
  * @property float $price_per_email
  * @property float $price_per_text
+ * @property float $price_per_eco_letter
  * @property float $fee
+ * @property boolean $status
  * @property Json|null $meta_data
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
