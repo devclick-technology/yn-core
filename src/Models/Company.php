@@ -4,6 +4,7 @@ namespace YouNegotiate\Models;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\ICompany;
@@ -377,5 +378,10 @@ class Company extends BaseModel implements ICompany
     public function membership(): HasOne
     {
         return $this->hasOne(CompanyMembership::class);
+    }
+
+    public function companyMembership(): BelongsToMany
+    {
+        return $this->belongsToMany(Membership::class, 'company_memberships');
     }
 }
