@@ -83,6 +83,7 @@ use Illuminate\Support\Carbon;
  * @property float|null $custom_max_days_first_pay
  * @property int|null $is_deactive
  * @property float $licence_fees
+ * @property string|null $tilled_account_id
  * @property-read Collection<int, Template> $Activetemplates
  * @property-read int|null $activetemplates_count
  * @property-read ClientApiKey|null $apiKey
