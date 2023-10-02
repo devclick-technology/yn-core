@@ -21,4 +21,9 @@ class CompanyMembership extends Model implements ICompanyMembership
     {
         return $this->belongsTo(Membership::class);
     }
+
+    public function nextMembershipPlan(): BelongsTo
+    {
+        return $this->belongsTo(Membership::class, 'next_membership_plan_id');
+    }
 }
