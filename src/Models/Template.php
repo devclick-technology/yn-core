@@ -2,16 +2,13 @@
 
 namespace YouNegotiate\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\ITemplate;
 use App\Models\User;
 
-class Template extends Model implements ITemplate
+class Template extends BaseModel implements ITemplate
 {
     use SoftDeletes;
-
-    protected $guarded = ['id', 'created_at', 'updated_at', 'company_id', 'created_by', 'group_id'];
 
     public function createdBy()
     {

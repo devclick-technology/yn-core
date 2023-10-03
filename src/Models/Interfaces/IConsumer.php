@@ -5,6 +5,7 @@ namespace YouNegotiate\Models\Interfaces;
 use YouNegotiate\Models\CommunicationStatus;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\ConsumerNegotiation;
+use YouNegotiate\Models\ConsumerProfile;
 use YouNegotiate\Models\ConsumerUnsubscription;
 use YouNegotiate\Models\PaymentProfile;
 use YouNegotiate\Models\ScheduleTransaction;
@@ -15,6 +16,7 @@ use Illuminate\Support\Carbon;
 /**
  * @property int $id
  * @property int|null $company_id
+ * @property int|null $consumerProfile
  * @property int|null $consumer_login_id
  * @property int|null $sub_client1_id
  * @property string|null $sub_client1_name
@@ -59,6 +61,10 @@ use Illuminate\Support\Carbon;
  * @property float|null $min_monthly_pay_percent
  * @property float|null $min_monthly_pay_amount
  * @property int|null $max_days_first_pay
+ * @property float|null $group_pif_discount_percent
+ * @property float|null $group_pay_setup_discount_percent
+ * @property float|null $group_min_monthly_pay_percent
+ * @property float|null $group_max_days_first_pay
  * @property string|null $pass_through1
  * @property string|null $pass_through2
  * @property string|null $pass_through3

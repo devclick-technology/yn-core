@@ -4,15 +4,12 @@ namespace YouNegotiate\Models;
 
 use YouNegotiate\Traits\CompanyIDTrait;
 use YouNegotiate\Traits\CreatedByTrait;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\IGroup;
 
-class Group extends Model implements IGroup
+class Group extends BaseModel implements IGroup
 {
     use SoftDeletes, CompanyIDTrait, CreatedByTrait;
-
-    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at', 'send_template'];
 
     public function formQuery($query, $field_name, $value_start, $value_end)
     {

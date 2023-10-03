@@ -2,15 +2,9 @@
 
 namespace YouNegotiate\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class ElettersConsumersMap extends Model
+class ElettersConsumersMap extends BaseModel
 {
     protected $table = 'eletters_consumers_map';
-
-    protected $fillable = [
-        'read_by_consumer',
-    ];
 
     public function consumer()
     {

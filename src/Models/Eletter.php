@@ -2,15 +2,12 @@
 
 namespace YouNegotiate\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\IEletter;
 
-class Eletter extends Model implements IEletter
+class Eletter extends BaseModel implements IEletter
 {
     use SoftDeletes;
-
-    protected $guarded = ['id', 'created_at', 'updated_at', 'company_id'];
 
     public function campaigns()
     {

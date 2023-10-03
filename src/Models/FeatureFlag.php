@@ -2,10 +2,8 @@
 
 namespace YouNegotiate\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use YouNegotiate\Models\Interfaces\IFeatureFlag;
 
-class FeatureFlag extends Model implements IFeatureFlag
+class FeatureFlag extends BaseModel implements IFeatureFlag
 {
-    protected $guarded = [];
 }
