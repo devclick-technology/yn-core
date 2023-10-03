@@ -11,9 +11,7 @@ use Illuminate\Support\Carbon;
  * @property float $price
  * @property string $description
  * @property string $frequency
- * @property float $price_per_email
- * @property float $price_per_text
- * @property float $price_per_eco_letter
+ * @property int $upload_accounts_limit
  * @property float $fee
  * @property boolean $status
  * @property Json|null $meta_data
@@ -24,5 +22,4 @@ use Illuminate\Support\Carbon;
 
 interface IMembership
 {
-
 }
