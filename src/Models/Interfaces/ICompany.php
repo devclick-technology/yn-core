@@ -2,6 +2,7 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use Illuminate\Database\Eloquent\Casts\Json;
 use YouNegotiate\Models\Campaign;
 use YouNegotiate\Models\ClientApiKey;
 use YouNegotiate\Models\CompanyTerm;
@@ -31,10 +32,10 @@ use Illuminate\Support\Carbon;
  * @property string|null $fed_tax_id
  * @property string|null $younegotiate_url
  * @property string|null $bank1_name
- * @property string|null $bank1_address
- * @property string|null $bank1_city
- * @property string|null $bank1_state
- * @property string|null $bank1_zip
+ * @property string|null $owner_address
+ * @property string|null $owner_city
+ * @property string|null $owner_state
+ * @property string|null $owner_zip
  * @property string|null $bank1_company_name
  * @property string|null $bank1_company_address
  * @property string|null $bank1_company_city
@@ -84,6 +85,18 @@ use Illuminate\Support\Carbon;
  * @property int|null $is_deactive
  * @property float $licence_fees
  * @property string|null $tilled_account_id
+ * @property string $company_category
+ * @property string $ssn
+ * @property int|null $average_transaction_amount
+ * @property string|null $yearly_volume_range
+ * @property string|null $statement_descriptor
+ * @property string|null $first_name
+ * @property string|null $last_name
+ * @property string|null $dob
+ * @property string|null $job_title
+ * @property float|null $percentage_shareholding
+ * @property string|null $tilled_payment_method_id
+ * @property json|null $tilled_payment_response
  * @property-read Collection<int, Template> $Activetemplates
  * @property-read int|null $activetemplates_count
  * @property-read ClientApiKey|null $apiKey
