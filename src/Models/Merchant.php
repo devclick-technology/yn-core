@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Log;
 use YouNegotiate\Models\Interfaces\IMerchant;
 use net\authorize\api\contract\v1 as AnetAPI;
@@ -209,5 +210,10 @@ class Merchant extends BaseModel implements IMerchant
         }
 
         return $p_amount;
+    }
+
+    public function paymentProfiles(): HasMany
+    {
+        return $this->hasMany(PaymentProfile::class);
     }
 }
