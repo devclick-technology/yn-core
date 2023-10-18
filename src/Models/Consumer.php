@@ -95,7 +95,7 @@ class Consumer extends BaseModel implements IConsumer
         //     $companyEmail = $this->company->account_contact_email;
         // }
 
-        $companyEmail = $this->company->account_contact_email;
+        $companyEmail = $this->company->billing_email;
 
         return $companyEmail;
     }
@@ -104,12 +104,12 @@ class Consumer extends BaseModel implements IConsumer
     {
         if ($this->sub_client2_id) {
             $subclient2 = Subclient::find($this->sub_client2_id);
-            $companyPhone = $subclient2->account_contact_phone;
+            $companyPhone = $subclient2->billing_phone;
         } elseif ($this->sub_client1_id) {
             $subclient1 = Subclient::find($this->sub_client1_id);
-            $companyPhone = $subclient1->account_contact_phone;
+            $companyPhone = $subclient1->billing_phone;
         } else {
-            $companyPhone = $this->company->account_contact_phone;
+            $companyPhone = $this->company->billing_phone;
         }
 
         return $companyPhone;
@@ -663,7 +663,7 @@ class Consumer extends BaseModel implements IConsumer
             $from_name = $this->company->name;
         }
 
-        $from_email = $this->company->account_contact_email;
+        $from_email = $this->company->billing_email;
         if ($this->sub_client1_id != null) {
             if ($this->subclient1->consumer_company_name != null) {
                 $from_name = $this->subclient1->consumer_company_name;
@@ -671,8 +671,8 @@ class Consumer extends BaseModel implements IConsumer
                 $from_name = $this->subclient1->name;
             }
 
-            if ($this->subclient1->account_contact_email != null) {
-                $from_email = $this->subclient1->account_contact_email;
+            if ($this->subclient1->billing_email != null) {
+                $from_email = $this->subclient1->billing_email;
             }
         }
         if ($this->sub_client2_id != null) {
@@ -682,8 +682,8 @@ class Consumer extends BaseModel implements IConsumer
                 $from_name = $this->subclient2->name;
             }
 
-            if ($this->subclient2->account_contact_email != null) {
-                $from_email = $this->subclient2->account_contact_email;
+            if ($this->subclient2->billing_email != null) {
+                $from_email = $this->subclient2->billing_email;
             }
         }
         $details['from_name'] = $from_name;
