@@ -101,7 +101,7 @@ use Illuminate\Support\Carbon;
  * @property int|null $text_permission
  * @property int|null $email_permission
  * @property int|null $mobile_call_permission
- * @property int|null $lanline_call_permission
+ * @property int|null $landline_call_permission
  * @property int|null $usps_permission
  * @property string|null $co_signer_first_name
  * @property string|null $co_signer_last_name
