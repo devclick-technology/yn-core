@@ -778,4 +778,9 @@ class Consumer extends BaseModel implements IConsumer
     {
         return $this->belongsTo(ConsumerProfile::class);
     }
+
+    public function consumerPersonalizedLogo(): HasOne
+    {
+        return $this->hasOne(ConsumerPersonalizedLogo::class);
+    }
 }
