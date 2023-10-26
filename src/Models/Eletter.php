@@ -55,7 +55,7 @@ class Eletter extends BaseModel implements IEletter
             }
         }
 
-        $invitation_link = new_invitation_link($consumer->invitation_link, $customer_communication_link);
+        //$invitation_link = new_invitation_link($consumer->invitation_link, $customer_communication_link);
 
         $createdContent = strtr($this->message, [
             '[First Name]' => $consumer->first_name,
@@ -87,7 +87,7 @@ class Eletter extends BaseModel implements IEletter
             '[DOB]' => $consumer->dob,
             '[Last 4 SSN]' => $consumer->last4ssn,
             '[Settlement $ Amount]' => $consumer->min_pay_in_full(),
-            '[Account QR Code]' => '<img src="http://api.qrserver.com/v1/create-qr-code/?data='.$invitation_link.'&size=100x100" width="100" height="100">',
+            '[Account QR Code]' => '<img src="http://api.qrserver.com/v1/create-qr-code/?data='.$consumer->invitation_link.'&size=100x100" width="100" height="100">',
             '[Reg F Letter Link]' => '<a href="https://'.$customer_communication_link.'.younegotiate.com/cfpb_letter_pdf/'.$consumer->id.'" target="_blank">Click here to download Reg F Letter</a>',
         ]);
 
