@@ -15,6 +15,6 @@ class ElettersConsumersMap extends BaseModel
 
     public function eletter(): BelongsTo
     {
-        return $this->belongsTo(Eletter::class, 'eletters_id');
+        return $this->belongsTo(Template::class, 'eletters_id', 'id');
     }
 }
