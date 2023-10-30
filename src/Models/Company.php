@@ -327,7 +327,7 @@ class Company extends BaseModel implements ICompany
     public function transactions($from, $to)
     {
         $transactions = $this->transaction()->where('rnn_share_pass', null)
-            ->where('status', 'Successful')
+            ->where('status', 'successful')
             ->where('superadmin_process', 0)
             ->whereRaw("DATE(created_at) Between '$from' and '$to'")
             ->get();
@@ -338,7 +338,7 @@ class Company extends BaseModel implements ICompany
     public function transactionsSuperAdmin($from, $to)
     {
         $transactions = $this->transaction()->where('rnn_share_pass', null)
-            ->where('status', 'Successful')
+            ->where('status', 'successful')
             ->where('superadmin_process', 1)
             ->whereRaw("DATE(created_at) Between '$from' and '$to'")
             ->get();
