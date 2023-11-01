@@ -150,7 +150,7 @@ class Company extends BaseModel implements ICompany
     public function doComplete()
     {
         if ($this->status == 'created' || $this->status == 'rejected') {
-            $this->profile_completed_at = now();
+            $this->tilled_profile_completed_at = now();
             $this->status = 'complete';
             $this->save();
         }
@@ -266,7 +266,7 @@ class Company extends BaseModel implements ICompany
 
     public function reject()
     {
-        $this->profile_completed_at = null;
+        $this->tilled_profile_completed_at = null;
         $this->status = 'rejected';
         $this->save();
     }
