@@ -5,7 +5,6 @@ namespace YouNegotiate\Models\Interfaces;
 use YouNegotiate\Models\CommunicationStatus;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\ConsumerNegotiation;
-use YouNegotiate\Models\ConsumerProfile;
 use YouNegotiate\Models\ConsumerUnsubscription;
 use YouNegotiate\Models\PaymentProfile;
 use YouNegotiate\Models\ScheduleTransaction;
@@ -127,7 +126,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $cfpb_passthrough5
  * @property-read ConsumerNegotiation|null $allConsumerNegotiation
  * @property-read CommunicationStatus|null $communication_status
- * @property-read Company|null $company
+ * @property-read Company $company
  * @property-read mixed $from_details
  * @property-read mixed $full_name
  * @property-read PaymentProfile|null $paymentProfile
