@@ -115,38 +115,6 @@ class Company extends BaseModel implements ICompany
         return $this->hasOne(User::class, 'company_id');
     }
 
-    public function incompleteStep()
-    {
-        if ($this->status == 'complete') {
-            return 'step-5';
-        }
-        if ($this->status == 'rejected') {
-            return 'step-1';
-        }
-
-        $incomplete = null;
-        foreach (config('app.company.profile_validation_rules') as $step => $field_rules) {
-            $flag = true;
-            $incomplete = $step;
-
-            foreach ($field_rules as $field => $rules) {
-                if ($field != 'merchant_name') {
-                    if (str_contains($rules, 'required')) {
-                        if (empty($this->{$field} && $field)) {
-                            $flag = false;
-                            break;
-                        }
-                    }
-                }
-            }
-            if (! $flag) {
-                break;
-            }
-        }
-
-        return $incomplete;
-    }
-
     public function doComplete()
     {
         if ($this->status == 'created' || $this->status == 'rejected') {
