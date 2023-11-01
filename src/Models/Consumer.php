@@ -85,14 +85,14 @@ class Consumer extends BaseModel implements IConsumer
     {
         // if($this->sub_client2_id){
         //     $subclient2 = Subclient::find($this->sub_client2_id);
-        //     $companyEmail = $subclient2->account_contact_email;
+        //     $companyEmail = $subclient2->billing_email;
         // }
         // elseif($this->sub_client1_id){
         //     $subclient1 = Subclient::find($this->sub_client1_id);
-        //     $companyEmail = $subclient1->account_contact_email;
+        //     $companyEmail = $subclient1->billing_email;
         // }
         // else{
-        //     $companyEmail = $this->company->account_contact_email;
+        //     $companyEmail = $this->company->billing_email;
         // }
 
         $companyEmail = $this->company->billing_email;
@@ -129,15 +129,15 @@ class Consumer extends BaseModel implements IConsumer
     {
         if ($this->sub_client2_id) {
             $subclient2 = Subclient::find($this->sub_client2_id);
-            $account_contact_full_name = $subclient2->account_contact_full_name;
+            $account_holder_name = $subclient2->account_holder_name;
         } elseif ($this->sub_client1_id) {
             $subclient1 = Subclient::find($this->sub_client1_id);
-            $account_contact_full_name = $subclient1->account_contact_full_name;
+            $account_holder_name = $subclient1->account_holder_name;
         } else {
-            $account_contact_full_name = $this->company->account_contact_full_name;
+            $account_holder_name = $this->company->account_holder_name;
         }
 
-        return $account_contact_full_name;
+        return $account_holder_name;
     }
 
     public function getMerchant($type = null)

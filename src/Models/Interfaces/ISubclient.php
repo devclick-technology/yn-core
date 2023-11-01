@@ -22,19 +22,18 @@ use Illuminate\Support\Carbon;
  * @property string|null $mailing_city
  * @property string|null $mailing_state
  * @property string|null $mailing_zip
- * @property string|null $bank1_name
+ * @property string|null $bank_name
  * @property string|null $bank1_address
  * @property string|null $bank1_city
  * @property string|null $bank1_state
  * @property string|null $bank1_zip
- * @property string|null $bank1_company_name
- * @property string|null $bank1_company_address
- * @property string|null $bank1_company_city
- * @property string|null $bank1_company_state
- * @property string|null $bank1_company_zip
- * @property string|null $bank1_account_type
- * @property string|null $bank1_routing
- * @property string|null $bank1_account_number
+ * @property string|null $billing_address
+ * @property string|null $billing_city
+ * @property string|null $billing_state
+ * @property string|null $billing_zip
+ * @property string|null $bank_account_type
+ * @property string|null $bank_routing_number
+ * @property string|null $bank_account_number
  * @property int $default_payment_account
  * @property string|null $billing_name
  * @property string|null $billing_email
@@ -43,7 +42,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $technical_email
  * @property string|null $technical_phone
  * @property string|null $consumer_company_name
- * @property string|null $account_contact_full_name
+ * @property string|null $account_holder_name
  * @property string|null $account_contact_email
  * @property string|null $account_contact_phone
  * @property float|null $pif_balance_discount_percent
