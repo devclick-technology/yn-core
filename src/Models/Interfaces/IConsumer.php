@@ -26,11 +26,11 @@ use Illuminate\Support\Carbon;
  * @property string $status
  * @property int|null $unique_customer_id
  * @property string|null $full_ssn
- * @property string|null $last4ssn
+ * @property string $last4ssn
  * @property string|null $first_name
  * @property string|null $middle_name
- * @property string|null $last_name
- * @property string|null $dob
+ * @property string $last_name
+ * @property string $dob
  * @property string|null $gender
  * @property string|null $address1
  * @property string|null $address2
