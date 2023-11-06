@@ -2,6 +2,7 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use BackedEnum;
 use YouNegotiate\Models\CommunicationStatus;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\ConsumerNegotiation;
@@ -23,7 +24,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $sub_client2_name
  * @property int|null $reference_number
  * @property string|null $account_number
- * @property string $status
+ * @property string|BackedEnum $status
  * @property int|null $unique_customer_id
  * @property string|null $full_ssn
  * @property string $last4ssn
@@ -73,8 +74,8 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property int|null $ppa_amount
- * @property int $counter_offer
- * @property int $offer_accepted
+ * @property bool $counter_offer
+ * @property bool $offer_accepted
  * @property int $payment_setup
  * @property int $has_failed_payment
  * @property string|null $account_open_date
@@ -82,7 +83,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $expiry_date
  * @property string|null $accrued_interest_rate
  * @property string|null $token
- * @property int $custom_offer
+ * @property bool $custom_offer
  * @property string|null $invitation_link
  * @property string|null $sub_client1_account_number
  * @property string|null $sub_client2_account_number

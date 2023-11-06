@@ -18,7 +18,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $last_month_amount
  * @property string|null $installment_type
  * @property string|null $first_pay_date
- * @property int $offer_accepted
+ * @property bool $offer_accepted
  * @property string|null $offer_accepted_at
  * @property string|null $counter_one_time_amount
  * @property string|null $counter_negotiate_amount
@@ -26,7 +26,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $counter_no_of_installments
  * @property string|null $counter_last_month_amount
  * @property string|null $counter_first_pay_date
- * @property int $counter_offer_accepted
+ * @property bool $counter_offer_accepted
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property string|null $communication_type
