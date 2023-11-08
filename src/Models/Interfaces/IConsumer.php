@@ -125,6 +125,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $cfpb_passthrough3
  * @property string|null $cfpb_passthrough4
  * @property string|null $cfpb_passthrough5
+ * @property int|null $consumer_profile_id
  * @property-read ConsumerNegotiation|null $allConsumerNegotiation
  * @property-read CommunicationStatus|null $communication_status
  * @property-read Company $company
