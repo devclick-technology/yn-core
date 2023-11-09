@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property string|null $transaction_id // comes from payment provider, null by default
  * @property string $transaction_type // enum - pif, installment,
- * @property string $schedule_date
+ * @property Carbon|string $schedule_date
  * @property int $consumer_id
  * @property int $company_id
  * @property string|null $sub_client1_id
