@@ -10,7 +10,7 @@ use Illuminate\Support\Carbon;
 /**
  * @property int $id
  * @property int $company_id
- * @property string $merchant_name
+ * @property string|BackedEnum $merchant_name
  * @property string|BackedEnum $merchant_type
  * @property string|null $usaepay_key
  * @property string|null $usaepay_pin
