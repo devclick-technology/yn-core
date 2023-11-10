@@ -2,6 +2,7 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use BackedEnum;
 use YouNegotiate\Models\Consumer;
 use Illuminate\Support\Carbon;
 
@@ -9,7 +10,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $consumer_id
  * @property int $company_id
- * @property string|null $negotiation_type
+ * @property string|BackedEnum $negotiation_type
  * @property string|null $payment_plan_current_balance
  * @property string|null $one_time_settlement
  * @property string|null $negotiate_amount
