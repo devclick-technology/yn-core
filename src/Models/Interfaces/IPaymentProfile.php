@@ -2,6 +2,7 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use BackedEnum;
 use Illuminate\Support\Carbon;
 
 /**
@@ -11,7 +12,7 @@ use Illuminate\Support\Carbon;
  * @property int|null $consumer_id
  * @property int|null $subclient1_id
  * @property int|null $subclient2_id
- * @property string|null $method
+ * @property string|BackedEnum $method
  * @property string|null $last4digit
  * @property string|null $expirity
  * @property string|null $gateway_token
