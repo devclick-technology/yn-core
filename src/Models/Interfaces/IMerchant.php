@@ -2,6 +2,7 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use BackedEnum;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\Subclient;
 use Illuminate\Support\Carbon;
@@ -10,7 +11,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $company_id
  * @property string $merchant_name
- * @property string|null $merchant_type
+ * @property string|BackedEnum $merchant_type
  * @property string|null $usaepay_key
  * @property string|null $usaepay_pin
  * @property string|null $authorize_login_id
