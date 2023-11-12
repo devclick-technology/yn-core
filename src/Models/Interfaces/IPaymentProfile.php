@@ -9,6 +9,7 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int|null $company_id
  * @property int|null $consumer_login_id
+ * @property string|int|null $tilled_customer_id
  * @property int|null $consumer_id
  * @property int|null $subclient1_id
  * @property int|null $subclient2_id
