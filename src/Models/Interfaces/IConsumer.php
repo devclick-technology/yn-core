@@ -16,7 +16,6 @@ use Illuminate\Support\Carbon;
 /**
  * @property int $id
  * @property int|null $company_id
- * @property int|null $consumerProfile
  * @property int|null $consumer_login_id
  * @property int|null $sub_client1_id
  * @property string|null $sub_client1_name
@@ -126,6 +125,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $cfpb_passthrough4
  * @property string|null $cfpb_passthrough5
  * @property int|null $consumer_profile_id
+ * @property-read ConsumerProfile|null $consumerProfile
  * @property-read ConsumerNegotiation|null $allConsumerNegotiation
  * @property-read CommunicationStatus|null $communication_status
  * @property-read Company $company
