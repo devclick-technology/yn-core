@@ -11,8 +11,8 @@ use Illuminate\Support\Carbon;
  * @property string|null $city
  * @property string|null $state
  * @property int|null $zip
- * @property int|null $mobile
- * @property int|null $landline
+ * @property string|null $mobile
+ * @property string|null $landline
  * @property string|null $email
  * @property string|null $username
  * @property Carbon|null $created_at
