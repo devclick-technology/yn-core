@@ -6,6 +6,7 @@ use BackedEnum;
 use YouNegotiate\Models\CommunicationStatus;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\ConsumerNegotiation;
+use YouNegotiate\Models\ConsumerProfile;
 use YouNegotiate\Models\ConsumerUnsubscription;
 use YouNegotiate\Models\PaymentProfile;
 use YouNegotiate\Models\ScheduleTransaction;
