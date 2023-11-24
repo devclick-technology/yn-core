@@ -14,6 +14,7 @@ use Illuminate\Support\Carbon;
  * @property string|null $mobile
  * @property string|null $landline
  * @property string|null $email
+ * @property string|null $image
  * @property string|null $username
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
