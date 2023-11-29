@@ -12,8 +12,10 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property string|null $status_code
  * @property string|null $desc
- * @property int|null $aet_id
- * @property int|null $ast_id
+ * @property int|null $automated_email_template_id
+ * @property int|null $automated_sms_template_id
+ * @property int $trigger_type
+ * @property string $trigger_description
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read AutomatedCampaign|null $automatedCampaign
