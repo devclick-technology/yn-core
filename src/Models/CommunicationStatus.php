@@ -2,11 +2,16 @@
 
 namespace YouNegotiate\Models;
 
+use YouNegotiate\Enums\CommunicationStatusTriggerType;
 use YouNegotiate\Models\Interfaces\ICommunicationStatus;
 
 class CommunicationStatus extends BaseModel implements ICommunicationStatus
 {
     protected $table = 'communication_status';
+
+    protected $casts = [
+        'trigger_type' => CommunicationStatusTriggerType::class,
+    ];
 
     public function automationCampaign()
     {
