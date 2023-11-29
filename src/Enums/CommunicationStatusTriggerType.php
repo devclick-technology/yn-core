@@ -11,7 +11,7 @@ enum CommunicationStatusTriggerType :int
     /**
      * Gets the Enum by value, if it exists.
      */
-    public static function tryFromValue(string $value): ?static
+    public static function tryFromValue(int $value): ?static
     {
         $cases = array_filter(self::cases(), fn ($case): bool => $case->value === $value);
 
