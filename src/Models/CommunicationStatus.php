@@ -30,11 +30,11 @@ class CommunicationStatus extends BaseModel implements ICommunicationStatus
 
     public function emailTemplate()
     {
-        return $this->belongsTo(AutomatedTemplate::class, 'aet_id');
+        return $this->belongsTo(AutomatedTemplate::class, 'automated_email_template_id');
     }
 
     public function smsTemplate()
     {
-        return $this->belongsTo(AutomatedTemplate::class, 'ast_id');
+        return $this->belongsTo(AutomatedTemplate::class, 'automated_sms_template_id');
     }
 }

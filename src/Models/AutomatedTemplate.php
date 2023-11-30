@@ -21,12 +21,12 @@ class AutomatedTemplate extends BaseModel implements IAutomatedTemplate
 
     public function emailTemplate()
     {
-        return $this->hasOne(CommunicationStatus::class, 'aet_id');
+        return $this->hasOne(CommunicationStatus::class, 'automated_email_template_id');
     }
 
     public function smsTemplate()
     {
-        return $this->hasOne(CommunicationStatus::class, 'ast_id');
+        return $this->hasOne(CommunicationStatus::class, 'automated_sms_template_id');
     }
 
     public function getType()
