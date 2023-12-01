@@ -21,9 +21,9 @@ enum CommunicationStatusTriggerType: int
     public function getBadgeClass(): string
     {
         return match ($this) {
-            self::AUTOMATIC => 'badge bg-success/10 text-success dark:bg-success/15',
-            self::SCHEDULED => 'badge bg-info/10 text-info dark:bg-info/15',
-            self::BOTH => 'badge bg-secondary/10 text-secondary dark:bg-secondary-light/15 dark:text-secondary-light',
+            self::AUTOMATIC => 'badge bg-success text-white',
+            self::SCHEDULED => 'badge bg-info text-white',
+            self::BOTH => 'badge bg-secondary text-white',
         };
     }
 }
