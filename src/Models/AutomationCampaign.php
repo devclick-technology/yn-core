@@ -2,29 +2,32 @@
 
 namespace YouNegotiate\Models;
 
-use YouNegotiate\Models\Interfaces\IAutomationCampaign;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use YouNegotiate\Enums\AutomationCampaignFrequency;
 
-class AutomationCampaign extends BaseModel implements IAutomationCampaign
+class AutomationCampaign extends Model
 {
-    protected $table = 'automation_campaigns';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = ['communication_status_id', 'frequency', 'month_day', 'week_day', 'hours', 'minutes', 'start_date', 'enabled'];
 
-    public function communicationStatus()
-    {
-        return $this->belongsTo(CommunicationStatus::class, 'cmp_status_id');
-    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'frequency' => AutomationCampaignFrequency::class,
+        'start_date' => 'datetime',
+        'enabled' => 'boolean',
+    ];
 
-    public function creditorCampaign()
+    public function communicationStatus(): BelongsTo
     {
-        return $this->hasOne(CreditorAutomation::class, 'autocamp_id')->where('creditor_id', auth()->user()->id);
-    }
-
-    public function creditorAutomation()
-    {
-        return $this->hasOne(CreditorAutomation::class, 'autocamp_id');
-    }
-
-    public function creditorAutomations()
-    {
-        return $this->hasMany(CreditorAutomation::class, 'autocamp_id');
+        return $this->belongsTo(CommunicationStatus::class);
     }
 }
