@@ -58,20 +58,12 @@ class AutomatedTemplate extends Model
         return $this->hasOne(CommunicationStatus::class, 'automated_sms_template_id');
     }
 
-    public function getType()
+    public function getType(): ?string
     {
-        $type = '';
-        switch (strtolower($this->type)) {
-            case 'email':
-                $type = 'Email';
-                break;
-            case 'sms':
-                $type = 'SMS';
-                break;
-            default:
-                break;
-        }
-
-        return $type;
+        return match ($this->type->value) {
+            'email' => (string) str($this->type->value)->title(),
+            'sms' => (string) str($this->type->value)->upper(),
+            default => null,
+        };
     }
 }

@@ -1,14 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace YouNegotiate\Enums;
 
 use YouNegotiate\Enums\Traits\Names;
 use YouNegotiate\Enums\Traits\Values;
 
-enum TemplateField: string
+enum TemplateCustomField: string
 {
-    use Values;
     use Names;
+    use Values;
+
     case FIRST_NAME = '[First Name]';
     case LAST_NAME = '[Last Name]';
     case ACCOUNT_NUMBER = '[Account Number]';
