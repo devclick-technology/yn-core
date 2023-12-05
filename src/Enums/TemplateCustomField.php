@@ -9,7 +9,6 @@ use YouNegotiate\Enums\Traits\Values;
 
 enum TemplateCustomField: string
 {
-    use Names;
     use Values;
 
     case FIRST_NAME = '[First Name]';
