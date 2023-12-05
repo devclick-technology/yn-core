@@ -6,6 +6,8 @@ namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use YouNegotiate\Enums\CommunicationCode;
 use YouNegotiate\Enums\CommunicationStatusTriggerType;
 
@@ -35,14 +37,14 @@ class CommunicationStatus extends Model
         'trigger_type' => CommunicationStatusTriggerType::class,
     ];
 
-    public function automationCampaign()
+    public function automationCampaign(): HasOne
     {
-        return $this->hasOne(AutomationCampaign::class, 'cmp_status_id');
+        return $this->hasOne(AutomationCampaign::class);
     }
 
-    public function automationCampaigns()
+    public function automationCampaigns(): HasMany
     {
-        return $this->hasMany(AutomationCampaign::class, 'cmp_status_id');
+        return $this->hasMany(AutomationCampaign::class);
     }
 
     public function automatedCampaign()
