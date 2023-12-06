@@ -18,7 +18,7 @@ enum AutomationCampaignFrequency: string
     public static function displaySelectionBox(): array
     {
         return collect(self::cases())->mapWithKeys(fn ($case): array => [
-            $case->value => $case->displayName,
+            $case->value => $case->displayName(),
         ])->toArray();
 
     }
