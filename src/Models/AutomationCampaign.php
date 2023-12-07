@@ -13,7 +13,7 @@ class AutomationCampaign extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['communication_status_id', 'frequency', 'month_day', 'week_day', 'hourly', 'hours', 'minutes', 'start_date', 'enabled'];
+    protected $fillable = ['communication_status_id', 'frequency', 'weekly', 'hourly', 'enabled', 'start_at'];
 
     /**
      * The attributes that should be cast.
@@ -22,7 +22,7 @@ class AutomationCampaign extends Model
      */
     protected $casts = [
         'frequency' => AutomationCampaignFrequency::class,
-        'start_date' => 'datetime',
+        'start_at' => 'datetime',
         'enabled' => 'boolean',
     ];
 
