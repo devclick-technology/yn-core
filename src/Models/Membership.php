@@ -5,13 +5,26 @@ namespace YouNegotiate\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use YouNegotiate\Models\Interfaces\IMembership;
+use YouNegotiate\Enums\MembershipFrequency;
 
-class Membership extends Model implements IMembership
+class Membership extends Model
 {
     use SoftDeletes;
-    
-    protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
+
+    protected $fillable = [
+        'name',
+        'price',
+        'description',
+        'frequency',
+        'upload_accounts_limit',
+        'fees',
+        'status',
+        'meta_data',
+    ];
+
+    protected $casts = [
+        'frequency' => MembershipFrequency::class,
+    ];
 
     public function companiesMembership(): HasMany
     {
