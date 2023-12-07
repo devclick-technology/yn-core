@@ -20,7 +20,7 @@ enum MembershipFrequency: string
     public static function displaySelectionBox(): array
     {
         return collect(self::cases())->mapWithKeys(fn ($case): array => [
-            $case->displayName() => $case->value,
+            $case->value => $case->displayName(),
         ])->toArray();
     }
 }
