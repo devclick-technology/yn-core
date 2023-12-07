@@ -2,9 +2,11 @@
 
 namespace YouNegotiate\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use YouNegotiate\Enums\AutomationCampaignFrequency;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AutomationCampaign extends Model
 {
@@ -22,9 +24,13 @@ class AutomationCampaign extends Model
      */
     protected $casts = [
         'frequency' => AutomationCampaignFrequency::class,
-        'start_at' => 'datetime',
         'enabled' => 'boolean',
     ];
+
+    public function startAt(): Attribute
+    {
+        return Attribute::make(get: fn ($value) => Carbon::parse($value));
+    }
 
     public function communicationStatus(): BelongsTo
     {
