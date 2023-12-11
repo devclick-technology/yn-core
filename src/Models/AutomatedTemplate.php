@@ -2,15 +2,19 @@
 
 namespace YouNegotiate\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Enums\AutomatedTemplateType;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use YouNegotiate\Factories\AutomatedTemplateFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AutomatedTemplate extends Model
 {
+    use HasFactory;
     use SoftDeletes;
 
     /**
@@ -38,11 +42,6 @@ class AutomatedTemplate extends Model
         );
     }
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function automatedCampaign(): BelongsTo
     {
         return $this->belongsTo(AutomatedCampaign::class);
@@ -65,5 +64,13 @@ class AutomatedTemplate extends Model
             'sms' => (string) str($this->type->value)->upper(),
             default => null,
         };
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    public static function newFactory(): Factory
+    {
+        return AutomatedTemplateFactory::new();
     }
 }
