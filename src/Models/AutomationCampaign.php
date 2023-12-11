@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use YouNegotiate\Enums\AutomationCampaignFrequency;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AutomationCampaign extends Model
 {
@@ -35,5 +36,10 @@ class AutomationCampaign extends Model
     public function communicationStatus(): BelongsTo
     {
         return $this->belongsTo(CommunicationStatus::class);
+    }
+
+    public function automationCampaignHistories(): HasMany
+    {
+        return $this->hasMany(AutomationCampaignHistory::class);
     }
 }
