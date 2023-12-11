@@ -24,7 +24,7 @@ class AutomationCampaignHistory extends Model
         'automated_template_type',
         'phone',
         'email',
-        'sms_cost',
+        'cost',
         'status',
     ];
 
