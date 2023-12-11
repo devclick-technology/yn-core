@@ -2,10 +2,12 @@
 
 namespace YouNegotiate\Enums;
 
+use YouNegotiate\Enums\Traits\Names;
 use YouNegotiate\Enums\Traits\Values;
 
 enum AutomationCampaignFrequency: string
 {
+    use Names;
     use Values;
 
     case ONCE = 'once';
