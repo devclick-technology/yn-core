@@ -2,10 +2,12 @@
 
 namespace YouNegotiate\Enums;
 
+use YouNegotiate\Enums\Traits\Names;
 use YouNegotiate\Enums\Traits\Values;
 
 enum MembershipFrequency: string
 {
+    use Names;
     use Values;
 
     case WEEKLY = 'weekly';
