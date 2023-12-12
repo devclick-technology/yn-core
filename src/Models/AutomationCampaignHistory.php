@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use YouNegotiate\Enums\AutomationCampaignHistoryStatus;
 
 class AutomationCampaignHistory extends Model
@@ -34,4 +35,24 @@ class AutomationCampaignHistory extends Model
      * @var array<string, string>
      */
     protected $casts = ['status' => AutomationCampaignHistoryStatus::class];
+
+    public function automationCampaign(): BelongsTo
+    {
+        return $this->belongsTo(AutomatedCampaign::class);
+    }
+
+    public function company(): BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function consumer(): BelongsTo
+    {
+        return $this->belongsTo(Consumer::class);
+    }
+
+    public function automatedTemplate(): BelongsTo
+    {
+        return $this->belongsTo(AutomatedTemplate::class);
+    }
 }
