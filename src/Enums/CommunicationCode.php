@@ -2,8 +2,12 @@
 
 namespace YouNegotiate\Enums;
 
+use YouNegotiate\Enums\Traits\Values;
+
 enum CommunicationCode: string
 {
+    use Values;
+
     case WELCOME = 'W-1';
     case NEW_ACCOUNT = 'N-1';
     case COUNTER_OFFER_BUT_NO_PAYMENT_SETUP = 'CO-1';
