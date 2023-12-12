@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace YouNegotiate\Enums;
 
-use YouNegotiate\Enums\Traits\Names;
+use YouNegotiate\Enums\Traits\SelectionBox;
 use YouNegotiate\Enums\Traits\Values;
 
 enum AutomationCampaignFrequency: string
 {
-    use Names;
+    use SelectionBox;
     use Values;
 
     case ONCE = 'once';
@@ -15,11 +17,4 @@ enum AutomationCampaignFrequency: string
     case DAILY = 'daily';
     case WEEKLY = 'weekly';
     case MONTHLY = 'monthly';
-
-    public static function displaySelectionBox(): array
-    {
-        return collect(self::cases())->mapWithKeys(fn ($case): array => [
-            $case->value => $case->displayName(),
-        ])->toArray();
-    }
 }
