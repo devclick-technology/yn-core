@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace YouNegotiate\Models;
 
 use Carbon\Carbon;
@@ -16,7 +18,14 @@ class AutomationCampaign extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['communication_status_id', 'frequency', 'weekly', 'hourly', 'enabled', 'start_at'];
+    protected $fillable = [
+        'communication_status_id',
+        'frequency',
+        'weekly',
+        'hourly',
+        'enabled',
+        'start_at'
+    ];
 
     /**
      * The attributes that should be cast.
@@ -38,8 +47,8 @@ class AutomationCampaign extends Model
         return $this->belongsTo(CommunicationStatus::class);
     }
 
-    public function automationCampaignHistories(): HasMany
+    public function communicationHistories(): HasMany
     {
-        return $this->hasMany(AutomationCampaignHistory::class);
+        return $this->hasMany(CommunicationHistory::class);
     }
 }
