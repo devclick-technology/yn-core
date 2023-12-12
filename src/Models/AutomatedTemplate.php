@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +13,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use YouNegotiate\Factories\AutomatedTemplateFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AutomatedTemplate extends Model
 {
@@ -42,9 +45,9 @@ class AutomatedTemplate extends Model
         );
     }
 
-    public function automatedCampaign(): BelongsTo
+    public function automationCampaign(): HasMany
     {
-        return $this->belongsTo(AutomatedCampaign::class);
+        return $this->hasMany(AutomationCampaign::class);
     }
 
     public function emailTemplate(): HasOne

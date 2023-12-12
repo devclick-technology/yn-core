@@ -47,11 +47,6 @@ class CommunicationStatus extends Model
         return $this->hasMany(AutomationCampaign::class);
     }
 
-    public function automatedCampaign()
-    {
-        return $this->hasOne(AutomatedCampaign::class, 'cmp_status_id');
-    }
-
     public function emailTemplate(): BelongsTo
     {
         return $this->belongsTo(AutomatedTemplate::class, 'automated_email_template_id');
