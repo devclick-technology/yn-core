@@ -26,7 +26,7 @@ class Consumer extends BaseModel implements IConsumer
         return $this->belongsTo(Subclient::class, 'sub_client1_id');
     }
 
-    public function subClientTwo(): BelongsTo
+    public function subclientTwo(): BelongsTo
     {
         return $this->belongsTo(Subclient::class, 'sub_client2_id');
     }
