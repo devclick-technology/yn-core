@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,21 +13,37 @@ use Illuminate\Notifications\Notifiable;
 
 class Consumer extends BaseModel implements IConsumer
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
+    use Notifiable;
 
-    public function company()
+    public function company(): BelongsTo
     {
-        return $this->belongsTo(Company::class, 'company_id', 'id');
+        return $this->belongsTo(Company::class);
+    }
+
+    public function subclientOne(): BelongsTo
+    {
+        return $this->belongsTo(Subclient::class, 'sub_client1_id');
+    }
+
+    public function subClientTwo(): BelongsTo
+    {
+        return $this->belongsTo(Subclient::class, 'sub_client2_id');
+    }
+
+    public function consumerProfile(): BelongsTo
+    {
+        return $this->belongsTo(ConsumerProfile::class);
     }
 
     public function subclient2()
     {
-        return $this->belongsTo(Subclient::class, 'sub_client2_id', 'id');
+        return $this->belongsTo(Subclient::class, 'sub_client2_id');
     }
 
     public function subclient1()
     {
-        return $this->belongsTo(Subclient::class, 'sub_client1_id', 'id');
+        return $this->belongsTo(Subclient::class, 'sub_client1_id');
     }
 
     public function paymentProfile()
@@ -772,11 +790,6 @@ class Consumer extends BaseModel implements IConsumer
     public function routeNotificationForMail($notification)
     {
         return $this->email1;
-    }
-
-    public function consumerProfile(): BelongsTo
-    {
-        return $this->belongsTo(ConsumerProfile::class);
     }
 
     public function consumerPersonalizedLogo(): HasOne
