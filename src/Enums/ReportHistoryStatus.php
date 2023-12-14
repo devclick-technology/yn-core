@@ -7,5 +7,5 @@ namespace YouNegotiate\Enums;
 enum ReportHistoryStatus: int
 {
     case SUCCESS = 1;
-    case FAILED = 0;
+    case FAILED = 2;
 }
