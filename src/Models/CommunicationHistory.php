@@ -18,6 +18,7 @@ class CommunicationHistory extends Model
      */
     protected $fillable = [
         'automation_campaign_id',
+        'communication_status_id',
         'consumer_id',
         'company_id',
         'sub_client_one_id',
@@ -39,6 +40,11 @@ class CommunicationHistory extends Model
         'status' => CommunicationHistoryStatus::class,
         'automated_template_type' => AutomatedTemplateType::class,
     ];
+
+    public function communicationStatus(): BelongsTo
+    {
+        return $this->belongsTo(CommunicationStatus::class);
+    }
 
     public function automationCampaign(): BelongsTo
     {
