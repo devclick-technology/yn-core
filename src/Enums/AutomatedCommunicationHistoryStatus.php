@@ -6,7 +6,7 @@ namespace YouNegotiate\Enums;
 
 use YouNegotiate\Enums\Traits\SelectionBox;
 
-enum CommunicationHistoryStatus: int
+enum AutomatedCommunicationHistoryStatus: int
 {
     use SelectionBox;
 
