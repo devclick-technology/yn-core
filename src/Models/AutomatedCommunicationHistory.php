@@ -6,7 +6,7 @@ namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use YouNegotiate\Enums\AutomatedTemplateType;
-use YouNegotiate\Enums\CommunicationHistoryStatus;
+use YouNegotiate\Enums\AutomatedCommunicationHistoryStatus;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AutomatedCommunicationHistory extends Model
@@ -37,7 +37,7 @@ class AutomatedCommunicationHistory extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'status' => CommunicationHistoryStatus::class,
+        'status' => AutomatedCommunicationHistoryStatus::class,
         'automated_template_type' => AutomatedTemplateType::class,
     ];
 
