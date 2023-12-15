@@ -244,9 +244,9 @@ class Company extends BaseModel implements ICompany
         return json_decode($this->send_commission);
     }
 
-    public function personalizedLogo()
+    public function personalizedLogo(): HasOne
     {
-        return $this->belongsTo(PersonalizedLogo::class, 'company_id', 'id');
+        return $this->hasOne(PersonalizedLogo::class);
     }
 
     public function fullYNURL()
@@ -334,7 +334,7 @@ class Company extends BaseModel implements ICompany
         return $this->transactionsSuperAdmin($from, $to)->sum('amount');
     }
 
-    public function personalized()
+    public function personalized(): HasOne
     {
         return $this->hasOne(PersonalizedLogo::class);
     }
