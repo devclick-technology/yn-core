@@ -1,48 +1,68 @@
 <?php
 
+declare(strict_types=1);
+
 namespace YouNegotiate\Models;
 
-use YouNegotiate\Models\Interfaces\IAutomatedCommunicationHistory;
+use Illuminate\Database\Eloquent\Model;
+use YouNegotiate\Enums\AutomatedTemplateType;
+use YouNegotiate\Enums\CommunicationHistoryStatus;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class AutomatedCommunicationHistory extends BaseModel implements IAutomatedCommunicationHistory
+class AutomatedCommunicationHistory extends Model
 {
-    protected $table = 'automated_communication_histories';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'automation_campaign_id',
+        'communication_status_id',
+        'consumer_id',
+        'company_id',
+        'sub_client_one_id',
+        'sub_client_two_id',
+        'automated_template_id',
+        'automated_template_type',
+        'phone',
+        'email',
+        'cost',
+        'status',
+    ];
 
-    public function company()
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'status' => CommunicationHistoryStatus::class,
+        'automated_template_type' => AutomatedTemplateType::class,
+    ];
+
+    public function communicationStatus(): BelongsTo
+    {
+        return $this->belongsTo(CommunicationStatus::class);
+    }
+
+    public function automationCampaign(): BelongsTo
+    {
+        return $this->belongsTo(AutomationCampaign::class);
+    }
+
+    public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
 
-    public function consumer()
+    public function consumer(): BelongsTo
     {
-        return $this->belongsTo(Consumer::class)->withDefault(['full_name' => '']);
+        return $this->belongsTo(Consumer::class);
     }
 
-    public function group()
+    public function automatedTemplate(): BelongsTo
     {
-        return $this->belongsTo(Group::class)->withDefault(['name' => '']);
-    }
-
-    public function template()
-    {
-        return $this->belongsTo(Template::class)->withDefault(['name' => '', 'type' => '']);
-    }
-
-    public function templateType()
-    {
-        $template_type = null;
-        if ($this->template_type == null) {
-            if ($this->template_id) {
-                $template_type = $this->template->type;
-            } elseif ($this->email != null) {
-                $template_type = 'email';
-            } else {
-                $template_type = 'sms';
-            }
-        } else {
-            $template_type = $this->template_type;
-        }
-
-        return $template_type;
+        return $this->belongsTo(AutomatedTemplate::class);
     }
 }
