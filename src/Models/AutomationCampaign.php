@@ -47,8 +47,8 @@ class AutomationCampaign extends Model
         return $this->belongsTo(CommunicationStatus::class);
     }
 
-    public function communicationHistories(): HasMany
+    public function automatedCommunicationHistories(): HasMany
     {
-        return $this->hasMany(CommunicationHistory::class);
+        return $this->hasMany(AutomatedCommunicationHistory::class);
     }
 }
