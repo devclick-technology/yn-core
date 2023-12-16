@@ -2,8 +2,8 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use YouNegotiate\Models\Company;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\Company;
 
 /**
  * @property int $id
@@ -28,7 +28,6 @@ use Illuminate\Support\Carbon;
  * @property int $superadmin_process 1=from superadmin process
  * @property-read Company|null $company
  */
-
 interface IRnnTransaction
 {
 }

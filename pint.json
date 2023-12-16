@@ -1,0 +1,28 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "global_namespace_import": {
+            "import_classes": true,
+            "import_constants": true,
+            "import_functions": true
+        },
+        "method_argument_space": {
+            "after_heredoc": false,
+            "keep_multiple_spaces_after_comma": false
+        },
+        "single_quote": {
+            "strings_containing_single_quote_chars": false
+        },
+        "concat_space": {
+            "spacing": "one"
+        },
+        "curly_braces_position": {
+            "anonymous_classes_opening_brace": "same_line"
+        },
+        "declare_strict_types": false,
+        "get_class_to_class_keyword": true,
+        "use_arrow_functions": true,
+        "single_trait_insert_per_statement": true,
+        "single_blank_line_at_eof": true
+    }
+}

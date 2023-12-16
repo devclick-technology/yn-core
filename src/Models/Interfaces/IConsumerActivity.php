@@ -2,9 +2,9 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\Consumer;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -24,7 +24,6 @@ use Illuminate\Support\Carbon;
  * @property-read Company|null $company
  * @property-read Consumer|null $consumer
  */
-
 interface IConsumerActivity
 {
 }

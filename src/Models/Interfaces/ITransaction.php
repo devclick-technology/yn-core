@@ -2,8 +2,8 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use YouNegotiate\Models\Consumer;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\Consumer;
 
 /**
  * @property int $id
@@ -36,7 +36,6 @@ use Illuminate\Support\Carbon;
  * @property-read Consumer|null $consumer
  * @property-read mixed $rnn_share_amount
  */
-
 interface ITransaction
 {
 }

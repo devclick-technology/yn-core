@@ -18,7 +18,6 @@ use YouNegotiate\Models\Membership;
  * @property-read Company|null $company
  * @property-read Membership|null $membership
  */
-
 interface IMembershipTransaction
 {
 }

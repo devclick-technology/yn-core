@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models\Interfaces;
 
 use Illuminate\Support\Carbon;
+
 /**
  * @property int $id
  * @property string|null $company_id

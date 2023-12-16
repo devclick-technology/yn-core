@@ -62,9 +62,9 @@ class Eletter extends BaseModel implements IEletter
             '[Last Name]' => $consumer->last_name,
             '[Master account number]' => $consumer->account_number,
             '[Account Balance]' => number_format($consumer->current_balance, 2),
-            '[Payment Set up Discount %]' => number_format($consumer->actualPSD(), 2).'%',
+            '[Payment Set up Discount %]' => number_format($consumer->actualPSD(), 2) . '%',
             '[Payment Set up Discount Amount]' => number_format($consumer->actualPSDamount(), 2),
-            '[Pay in Full Discount %]' => number_format($consumer->actualPIF(), 2).'%',
+            '[Pay in Full Discount %]' => number_format($consumer->actualPIF(), 2) . '%',
             '[Pay in Full Discount Amount]' => number_format($consumer->actualPIFamount(), 2),
             '[You Negotiate Link]' => $consumer->invitation_link,
             '[Pass Through 1]' => $consumer->pass_through1,
@@ -87,8 +87,8 @@ class Eletter extends BaseModel implements IEletter
             '[DOB]' => $consumer->dob,
             '[Last 4 SSN]' => $consumer->last4ssn,
             '[Settlement $ Amount]' => $consumer->min_pay_in_full(),
-            '[Account QR Code]' => '<img src="http://api.qrserver.com/v1/create-qr-code/?data='.$consumer->invitation_link.'&size=100x100" width="100" height="100">',
-            '[Reg F Letter Link]' => '<a href="https://'.$customer_communication_link.'.younegotiate.com/cfpb_letter_pdf/'.$consumer->id.'" target="_blank">Click here to download Reg F Letter</a>',
+            '[Account QR Code]' => '<img src="http://api.qrserver.com/v1/create-qr-code/?data=' . $consumer->invitation_link . '&size=100x100" width="100" height="100">',
+            '[Reg F Letter Link]' => '<a href="https://' . $customer_communication_link . '.younegotiate.com/cfpb_letter_pdf/' . $consumer->id . '" target="_blank">Click here to download Reg F Letter</a>',
         ]);
 
         return $createdContent;

@@ -2,10 +2,10 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\Merchant;
 use YouNegotiate\Models\Subclient;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -63,7 +63,6 @@ use Illuminate\Support\Carbon;
  * @property-read Merchant $merchant
  * @property-read Subclient|null $parent
  */
-
 interface ISubclient
 {
 }

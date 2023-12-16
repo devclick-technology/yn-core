@@ -3,6 +3,8 @@
 namespace YouNegotiate\Models\Interfaces;
 
 use BackedEnum;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\CommunicationStatus;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\ConsumerNegotiation;
@@ -11,8 +13,6 @@ use YouNegotiate\Models\ConsumerUnsubscription;
 use YouNegotiate\Models\PaymentProfile;
 use YouNegotiate\Models\ScheduleTransaction;
 use YouNegotiate\Models\Subclient;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -139,7 +139,6 @@ use Illuminate\Support\Carbon;
  * @property-read Subclient|null $subclient2
  * @property-read ConsumerUnsubscription|null $unsubscription
  */
-
 interface IConsumer
 {
 }

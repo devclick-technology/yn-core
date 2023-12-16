@@ -2,10 +2,10 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use Illuminate\Support\Carbon;
+use App\Models\AutomatedTemplate;
 use App\Models\CommunicationStatus;
 use App\Models\Company;
-use App\Models\AutomatedTemplate;
+use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -34,7 +34,6 @@ use App\Models\AutomatedTemplate;
  * @property-read AutomatedTemplate|null $emailTemplate
  * @property-read AutomatedTemplate|null $smsTemplate
  */
-
 interface IAutomatedCampaign
 {
 }
