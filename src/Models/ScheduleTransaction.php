@@ -24,27 +24,27 @@ class ScheduleTransaction extends BaseModel implements IScheduleTransaction
         $date = date('d', $time);
 
         if ($frequency == 'weekly') {
-            return date('M d, Y', strtotime($firstdate_payment.' + 1 week'));
+            return date('M d, Y', strtotime($firstdate_payment . ' + 1 week'));
         } elseif ($frequency == 'bimonthly') {
-            return date('M d, Y', strtotime($firstdate_payment.' + 2 week'));
+            return date('M d, Y', strtotime($firstdate_payment . ' + 2 week'));
         } elseif ($frequency == 'monthly') {
             //return date('M d, Y',strtotime($firstdate_payment.' + 1 month'));
             if ($month == 'Jan') {
                 if ($date == 29) {
-                    return date('M d, Y', strtotime($firstdate_payment.' + 30 days'));
+                    return date('M d, Y', strtotime($firstdate_payment . ' + 30 days'));
                 } elseif ($date == 30) {
-                    return date('M d, Y', strtotime($firstdate_payment.' + 29 days'));
+                    return date('M d, Y', strtotime($firstdate_payment . ' + 29 days'));
                 } else {
-                    return date('M d, Y', strtotime($firstdate_payment.' + 1 month'));
+                    return date('M d, Y', strtotime($firstdate_payment . ' + 1 month'));
                 }
             } elseif ($month == 'Feb') {
                 if ($date == 28) {
-                    return date('M d, Y', strtotime($firstdate_payment.' + 30 days'));
+                    return date('M d, Y', strtotime($firstdate_payment . ' + 30 days'));
                 } else {
-                    return date('M d, Y', strtotime($firstdate_payment.' + 1 month'));
+                    return date('M d, Y', strtotime($firstdate_payment . ' + 1 month'));
                 }
             } else {
-                return date('M d, Y', strtotime($firstdate_payment.' + 1 month'));
+                return date('M d, Y', strtotime($firstdate_payment . ' + 1 month'));
             }
         }
     }

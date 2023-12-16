@@ -2,11 +2,11 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use App\Models\User;
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\Group;
 use YouNegotiate\Models\Template;
-use App\Models\User;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -29,7 +29,6 @@ use Illuminate\Support\Carbon;
  * @property-read Group $group
  * @property-read Template $template
  */
-
 interface ICampaign
 {
 }

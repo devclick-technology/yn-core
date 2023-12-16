@@ -2,10 +2,10 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use YouNegotiate\Models\Campaign;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\Campaign;
 
 /**
  * @property int $id
@@ -25,7 +25,6 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $campaigns_count
  * @property-read User|null $createdBy
  */
-
 interface ITemplate
 {
 }

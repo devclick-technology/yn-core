@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use YouNegotiate\Enums\AutomatedTemplateType;
-use YouNegotiate\Enums\AutomatedCommunicationHistoryStatus;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use YouNegotiate\Enums\AutomatedCommunicationHistoryStatus;
+use YouNegotiate\Enums\AutomatedTemplateType;
 
 class AutomatedCommunicationHistory extends Model
 {

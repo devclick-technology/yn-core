@@ -7,9 +7,10 @@ namespace YouNegotiate\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Str;
-use YouNegotiate\Models\Interfaces\IConsumer;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
+use throwable;
+use YouNegotiate\Models\Interfaces\IConsumer;
 
 class Consumer extends BaseModel implements IConsumer
 {
@@ -58,7 +59,7 @@ class Consumer extends BaseModel implements IConsumer
 
     public function getFullNameAttribute()
     {
-        return $this->first_name.($this->middle_name ? ' '.$this->middle_name : '').' '.$this->last_name;
+        return $this->first_name . ($this->middle_name ? ' ' . $this->middle_name : '') . ' ' . $this->last_name;
     }
 
     public function getCompanyName()
@@ -165,7 +166,7 @@ class Consumer extends BaseModel implements IConsumer
                 ->join('subclients', 'merchants.subclient_id', 'subclients.id')
                 ->where('subclient_id', $this->sub_client2_id)
                 ->where('subclients.default_payment_account', 1)
-                ->when($type, fn($q) => $q->where('merchant_type', $type))
+                ->when($type, fn ($q) => $q->where('merchant_type', $type))
                 ->select('merchants.*')
                 ->first();
             if (! $select_merchant) {
@@ -174,14 +175,14 @@ class Consumer extends BaseModel implements IConsumer
                     ->where('subclient_id', $this->sub_client1_id)
                     ->where('subclients.default_payment_account', 1)
                     ->select('merchants.*')
-                    ->when($type, fn($q) => $q->where('merchant_type', $type))
+                    ->when($type, fn ($q) => $q->where('merchant_type', $type))
                     ->first();
 
                 if (! $select_merchant) {
                     $select_merchant = Merchant::query()
                         ->where('company_id', $this->company_id)
                         ->whereNull('subclient_id')
-                        ->when($type, fn($q) => $q->where('merchant_type', $type))
+                        ->when($type, fn ($q) => $q->where('merchant_type', $type))
                         ->first();
                 }
             }
@@ -191,21 +192,21 @@ class Consumer extends BaseModel implements IConsumer
                 ->where('subclient_id', $this->sub_client1_id)
                 ->where('subclients.default_payment_account', 1)
                 ->select('merchants.*')
-                ->when($type, fn($q) => $q->where('merchant_type', $type))
+                ->when($type, fn ($q) => $q->where('merchant_type', $type))
                 ->first();
 
             if (! $select_merchant) {
                 $select_merchant = Merchant::query()
                     ->where('company_id', $this->company_id)
                     ->whereNull('subclient_id')
-                    ->when($type, fn($q) => $q->where('merchant_type', $type))
+                    ->when($type, fn ($q) => $q->where('merchant_type', $type))
                     ->first();
             }
         } elseif ($this->company_id) {
             $select_merchant = Merchant::query()
                 ->where('company_id', $this->company_id)
                 ->whereNull('subclient_id')
-                ->when($type, fn($q) => $q->where('merchant_type', $type))
+                ->when($type, fn ($q) => $q->where('merchant_type', $type))
                 ->first();
         }
 
@@ -376,7 +377,7 @@ class Consumer extends BaseModel implements IConsumer
 
     public function get_terms_from_group($id)
     {
-        $url = 'https://creditor.younegotiate.com/ajax/consumer-in-group/'.$id;
+        $url = 'https://creditor.younegotiate.com/ajax/consumer-in-group/' . $id;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -543,8 +544,9 @@ class Consumer extends BaseModel implements IConsumer
         }
         $last = $randomString2;
 
-        $short_tag = $first.$consumer_id.$last;
-        return 'https://yneg.link/'.$short_tag;
+        $short_tag = $first . $consumer_id . $last;
+
+        return 'https://yneg.link/' . $short_tag;
     }
 
     public function saveInvitationLink(): void
@@ -625,7 +627,7 @@ class Consumer extends BaseModel implements IConsumer
     {
         $pl = $this->company->personalized;
 
-        return 'https://'.$pl->customer_communication_link.'.younegotiate.com/unsubscribe';
+        return 'https://' . $pl->customer_communication_link . '.younegotiate.com/unsubscribe';
     }
 
     public function unsubscription()
@@ -742,7 +744,7 @@ class Consumer extends BaseModel implements IConsumer
 
     public function consumerLogs()
     {
-        return ConsumerLog::where('consumer_id', 'like', '%'.$this->id.'%')->latest()->get();
+        return ConsumerLog::where('consumer_id', 'like', '%' . $this->id . '%')->latest()->get();
     }
 
     public function cfpb_consumer($fuh)
@@ -771,7 +773,7 @@ class Consumer extends BaseModel implements IConsumer
                     'value_start' => "$id",
                     'value_end' => null,
                 ];
-                $group_name = $this->company->company_name.' Template CFPB Reg F';
+                $group_name = $this->company->company_name . ' Template CFPB Reg F';
                 $group = new Group;
                 $group->company_id = $fuh->company_id;
                 $group->name = $group_name;
@@ -782,7 +784,7 @@ class Consumer extends BaseModel implements IConsumer
                 $group->created_by = $fuh->created_by;
                 $group->save();
             }
-        } catch (\throwable $e) {
+        } catch (throwable $e) {
             dump($e);
         }
     }

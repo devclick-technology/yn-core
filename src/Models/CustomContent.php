@@ -2,7 +2,6 @@
 
 namespace YouNegotiate\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use YouNegotiate\Models\Interfaces\ICustomContent;
 
 class CustomContent extends BaseModel implements ICustomContent

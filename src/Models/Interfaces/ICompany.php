@@ -2,7 +2,10 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Casts\Json;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Campaign;
 use YouNegotiate\Models\ClientApiKey;
 use YouNegotiate\Models\Company;
@@ -17,9 +20,6 @@ use YouNegotiate\Models\SFTPDetails;
 use YouNegotiate\Models\Subclient;
 use YouNegotiate\Models\Template;
 use YouNegotiate\Models\Transaction;
-use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -122,7 +122,6 @@ use Illuminate\Support\Carbon;
  * @property-read int|null $transaction_count
  * @property-read User|null $user
  */
-
 interface ICompany
 {
 }

@@ -37,7 +37,6 @@ use Illuminate\Support\Carbon;
  * @property Merchant|null $merchant_cc
  * @property Merchant|null $merchant_ach
  */
-
 interface IPaymentProfile
 {
 }

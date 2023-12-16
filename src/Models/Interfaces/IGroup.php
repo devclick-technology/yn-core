@@ -2,11 +2,11 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use YouNegotiate\Models\Company;
-use YouNegotiate\Models\Campaign;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\Campaign;
+use YouNegotiate\Models\Company;
 
 /**
  * @property int $id
@@ -33,7 +33,6 @@ use Illuminate\Support\Carbon;
  * @property-read mixed $member_count
  * @property-read mixed $total_balance
  */
-
 interface IGroup
 {
 }

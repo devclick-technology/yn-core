@@ -2,9 +2,9 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use YouNegotiate\Models\AutomationCampaign;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\AutomationCampaign;
 
 /**
  * @property int $id
@@ -17,7 +17,6 @@ use Illuminate\Support\Carbon;
  * @property-read AutomationCampaign|null $automatedCampaign
  * @property-read User|null $automatedCreditor
  */
-
 interface ICreditorAutomation
 {
 }

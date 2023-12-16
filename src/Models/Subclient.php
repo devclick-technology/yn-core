@@ -2,14 +2,16 @@
 
 namespace YouNegotiate\Models;
 
-use YouNegotiate\Traits\CompanyIDTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\ISubclient;
+use YouNegotiate\Traits\CompanyIDTrait;
 
 class Subclient extends BaseModel implements ISubclient
 {
-    use SoftDeletes, CompanyIDTrait, HasFactory;
+    use CompanyIDTrait;
+    use HasFactory;
+    use SoftDeletes;
 
     public function setDefaultPaymentAccountAttribute($value)
     {

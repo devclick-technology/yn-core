@@ -6,7 +6,6 @@ use YouNegotiate\Models\Interfaces\IFileUploadHistory;
 
 class FileUploadHistory extends BaseModel implements IFileUploadHistory
 {
-
     public function totalProcessed()
     {
         return $this->processed_count + $this->failed_count;

@@ -16,7 +16,6 @@ use Illuminate\Support\Carbon;
  * @property int|null $is_schedule
  * @property int|null $updated
  */
-
 interface IStripePaymentDetail
 {
 }

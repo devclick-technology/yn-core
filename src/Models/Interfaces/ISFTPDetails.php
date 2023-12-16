@@ -18,7 +18,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property string $type
  */
-
 interface ISFTPDetails
 {
 }

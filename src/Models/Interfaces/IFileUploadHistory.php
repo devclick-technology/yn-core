@@ -2,9 +2,9 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use YouNegotiate\Models\FailedFileUploadConsumer;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\FailedFileUploadConsumer;
 
 /**
  * @property int $id
@@ -26,7 +26,6 @@ use Illuminate\Support\Carbon;
  * @property-read Collection<int, FailedFileUploadConsumer> $failed_consumers
  * @property-read int|null $failed_consumers_count
  */
-
 interface IFileUploadHistory
 {
 }

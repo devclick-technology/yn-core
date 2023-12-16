@@ -2,19 +2,21 @@
 
 namespace YouNegotiate\Models;
 
-use YouNegotiate\Traits\CompanyIDTrait;
-use YouNegotiate\Traits\CreatedByTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Models\Interfaces\IGroup;
+use YouNegotiate\Traits\CompanyIDTrait;
+use YouNegotiate\Traits\CreatedByTrait;
 
 class Group extends BaseModel implements IGroup
 {
-    use SoftDeletes, CompanyIDTrait, CreatedByTrait;
+    use CompanyIDTrait;
+    use CreatedByTrait;
+    use SoftDeletes;
 
     public function formQuery($query, $field_name, $value_start, $value_end)
     {
         if (empty($value_end)) {
-            $query = $query->where($field_name, 'like', '%'.$value_start.'%');
+            $query = $query->where($field_name, 'like', '%' . $value_start . '%');
         } else {
             $query = $query->whereBetween($field_name, [$value_start, $value_end]);
         }
@@ -112,8 +114,8 @@ class Group extends BaseModel implements IGroup
                         $query = $this->formQuery($query, 'created_at', $custom_rule->value_start, $custom_rule->value_end);
                         break;
                     case 'age':
-                        $start_year = '-'.$custom_rule->value_start.' years';
-                        $end_year = '-'.$custom_rule->value_end.' years';
+                        $start_year = '-' . $custom_rule->value_start . ' years';
+                        $end_year = '-' . $custom_rule->value_end . ' years';
 
                         $start_year = date('Y-m-d', strtotime($start_year));
                         $end_year = date('Y-m-d', strtotime($end_year));
