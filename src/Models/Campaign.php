@@ -6,15 +6,19 @@ use App\Jobs\RunCampaignJob;
 use App\Jobs\SendEmailJob;
 use App\Jobs\SendSMSJob;
 use App\Mail\TemplateEmail;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use YouNegotiate\Models\Interfaces\ICampaign;
 use YouNegotiate\Traits\CompanyIDTrait;
 use YouNegotiate\Traits\CreatedByTrait;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use YouNegotiate\Models\Interfaces\ICampaign;
 
 class Campaign extends BaseModel implements ICampaign
 {
-    use SoftDeletes, CompanyIDTrait, CreatedByTrait;
+    use CompanyIDTrait;
+    use CreatedByTrait;
+    use SoftDeletes;
 
     protected $casts = [
         'sent_at' => 'datetime',
@@ -77,23 +81,23 @@ class Campaign extends BaseModel implements ICampaign
             if ($template->type == 'email') {
                 if ($consumer->email1 != null) {
                     if ($consumer->emailSubscribed()) {
-                        Log::channel('communication_command')->info('Sending email to: '.$consumer->email1.' Campaign ID: '.$this->id);
+                        Log::channel('communication_command')->info('Sending email to: ' . $consumer->email1 . ' Campaign ID: ' . $this->id);
                         $email = new TemplateEmail($template->content, $template->subject, $consumer, $company);
                         SendEmailJob::dispatch($email, trim($consumer->email1), $consumer, $this, '', 'email1');
                         $this->total_sent = $this->total_sent + 1;
                         $this->total_balance_delivered = $this->total_balance_delivered + $consumer->current_balance;
                     } else {
-                        Log::channel('communication_command')->error('Error: Sending email to: '.$consumer->email1.' Campaign ID: '.$this->id.' Reason: Unsubscribed');
-                        $failed_consumers .= ($consumer->id.'<>Consumer has unsubscribed from receiving emails,');
+                        Log::channel('communication_command')->error('Error: Sending email to: ' . $consumer->email1 . ' Campaign ID: ' . $this->id . ' Reason: Unsubscribed');
+                        $failed_consumers .= ($consumer->id . '<>Consumer has unsubscribed from receiving emails,');
                     }
                 } else {
-                    Log::channel('communication_command')->error('Error: Sending email to: '.$consumer->email1.' Campaign ID: '.$this->id.' Reason: Blank email');
-                    $failed_consumers .= ($consumer->id.'<>Consumer does not have email address,');
+                    Log::channel('communication_command')->error('Error: Sending email to: ' . $consumer->email1 . ' Campaign ID: ' . $this->id . ' Reason: Blank email');
+                    $failed_consumers .= ($consumer->id . '<>Consumer does not have email address,');
                 }
 
                 if (isset($consumer->email2) && $consumer->email2 != '') {
                     if ($consumer->emailSubscribed()) {
-                        Log::channel('communication_command')->info('Sending email to: '.$consumer->email2.' Campaign ID: '.$this->id);
+                        Log::channel('communication_command')->info('Sending email to: ' . $consumer->email2 . ' Campaign ID: ' . $this->id);
                         $email = new TemplateEmail($template->content, $template->subject, $consumer, $company);
                         SendEmailJob::dispatch($email, trim($consumer->email2), $consumer, $this);
                         // $this->total_sent = $this->total_sent + 1;
@@ -103,7 +107,7 @@ class Campaign extends BaseModel implements ICampaign
 
                 if (isset($consumer->co_signer_email) && $consumer->co_signer_email != '') {
                     if ($consumer->emailSubscribed()) {
-                        Log::channel('communication_command')->info('Sending email to: '.$consumer->co_signer_email.' Campaign ID: '.$this->id);
+                        Log::channel('communication_command')->info('Sending email to: ' . $consumer->co_signer_email . ' Campaign ID: ' . $this->id);
                         $email = new TemplateEmail($template->content, $template->subject, $consumer, $company);
                         SendEmailJob::dispatch($email, trim($consumer->co_signer_email), $consumer, $this);
                         // $this->total_sent = $this->total_sent + 1;
@@ -115,22 +119,22 @@ class Campaign extends BaseModel implements ICampaign
             if ($template->type == 'sms') {
                 if ($consumer->mobile1 != null) {
                     if ($consumer->smsSubscribed()) {
-                        Log::channel('communication_command')->info('Sending sms to: '.$consumer->mobile1.' Campaign ID: '.$this->id);
+                        Log::channel('communication_command')->info('Sending sms to: ' . $consumer->mobile1 . ' Campaign ID: ' . $this->id);
                         SendSMSJob::dispatch($template->content, trim($consumer->mobile1), $consumer, $this, $company, '', 'mobile1');
                         $this->total_sent = $this->total_sent + 1;
                         $this->total_balance_delivered = $this->total_balance_delivered + $consumer->current_balance;
                     } else {
-                        Log::channel('communication_command')->error('Error: Sending sms to: '.$consumer->mobile1.' Campaign ID: '.$this->id.' Reason: Unsubscribed');
-                        $failed_consumers .= ($consumer->id.'<>Consumer unsubscribed from receiving sms,');
+                        Log::channel('communication_command')->error('Error: Sending sms to: ' . $consumer->mobile1 . ' Campaign ID: ' . $this->id . ' Reason: Unsubscribed');
+                        $failed_consumers .= ($consumer->id . '<>Consumer unsubscribed from receiving sms,');
                     }
                 } else {
-                    Log::channel('communication_command')->error('Error: Sending sms to: '.$consumer->mobile1.' Campaign ID: '.$this->id.' Reason: Blank Mobile No');
-                    $failed_consumers .= ($consumer->id.'<>Consumer mobile number not present,');
+                    Log::channel('communication_command')->error('Error: Sending sms to: ' . $consumer->mobile1 . ' Campaign ID: ' . $this->id . ' Reason: Blank Mobile No');
+                    $failed_consumers .= ($consumer->id . '<>Consumer mobile number not present,');
                 }
 
                 if (isset($consumer->mobile2) && $consumer->mobile2 != null) {
                     if ($consumer->smsSubscribed()) {
-                        Log::channel('communication_command')->info('Sending sms to: '.$consumer->mobile2.' Campaign ID: '.$this->id);
+                        Log::channel('communication_command')->info('Sending sms to: ' . $consumer->mobile2 . ' Campaign ID: ' . $this->id);
                         SendSMSJob::dispatch($template->content, trim($consumer->mobile2), $consumer, $this, $company);
                         $this->total_sent = $this->total_sent + 1;
                         //$this->total_balance_delivered = $this->total_balance_delivered + $consumer->current_balance;
@@ -138,7 +142,7 @@ class Campaign extends BaseModel implements ICampaign
                 }
                 if (isset($consumer->co_signer_mobile) && $consumer->co_signer_mobile != null) {
                     if ($consumer->smsSubscribed()) {
-                        Log::channel('communication_command')->info('Sending sms to: '.$consumer->co_signer_mobile.' Campaign ID: '.$this->id);
+                        Log::channel('communication_command')->info('Sending sms to: ' . $consumer->co_signer_mobile . ' Campaign ID: ' . $this->id);
                         SendSMSJob::dispatch($template->content, trim($consumer->co_signer_mobile), $consumer, $this, $company);
                         $this->total_sent = $this->total_sent + 1;
                         //$this->total_balance_delivered = $this->total_balance_delivered + $consumer->current_balance;
@@ -148,7 +152,7 @@ class Campaign extends BaseModel implements ICampaign
             }
         }
         $this->failed_consumers = trim($failed_consumers, ',');
-        $this->sent_at = now();
+        $this->sent_at = Carbon::now();
         $this->save();
 
         return $message;
@@ -201,9 +205,9 @@ class Campaign extends BaseModel implements ICampaign
     {
         parent::boot();
         static::creating(function ($item) {
-            if (! empty(auth()->user())) {
-                $item->company_id = auth()->user()->company_id;
-                $item->created_by = auth()->user()->id;
+            if (! empty(Auth::user())) {
+                $item->company_id = Auth::user()->company_id;
+                $item->created_by = Auth::user()->id;
             }
         });
     }

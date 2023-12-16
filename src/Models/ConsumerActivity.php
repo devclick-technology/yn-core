@@ -2,8 +2,8 @@
 
 namespace YouNegotiate\Models;
 
-use YouNegotiate\Traits\CompanyIDTrait;
 use YouNegotiate\Models\Interfaces\IConsumerActivity;
+use YouNegotiate\Traits\CompanyIDTrait;
 
 class ConsumerActivity extends BaseModel implements IConsumerActivity
 {

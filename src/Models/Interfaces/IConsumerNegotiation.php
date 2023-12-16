@@ -3,8 +3,8 @@
 namespace YouNegotiate\Models\Interfaces;
 
 use BackedEnum;
-use YouNegotiate\Models\Consumer;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\Consumer;
 
 /**
  * @property int $id
@@ -42,7 +42,6 @@ use Illuminate\Support\Carbon;
  * @property string|null $counter_note
  * @property-read Consumer|null $consumer
  */
-
 interface IConsumerNegotiation
 {
 }

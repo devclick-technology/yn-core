@@ -2,9 +2,9 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Consumer;
 use YouNegotiate\Models\PaymentProfile;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -37,7 +37,6 @@ use Illuminate\Support\Carbon;
  * @property-read Consumer|null $consumer
  * @property-read PaymentProfile|null $paymentProfile
  */
-
 interface IScheduleTransaction
 {
 }

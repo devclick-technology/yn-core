@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace YouNegotiate\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use YouNegotiate\Enums\AutomationCampaignFrequency;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use YouNegotiate\Enums\AutomationCampaignFrequency;
 
 class AutomationCampaign extends Model
 {
@@ -24,7 +24,7 @@ class AutomationCampaign extends Model
         'weekly',
         'hourly',
         'enabled',
-        'start_at'
+        'start_at',
     ];
 
     /**

@@ -2,10 +2,10 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\Group;
 use YouNegotiate\Models\Template;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -23,7 +23,6 @@ use Illuminate\Support\Carbon;
  * @property-read Group|null $group
  * @property-read Template|null $template
  */
-
 interface IScheduledCampaign
 {
 }

@@ -3,9 +3,9 @@
 namespace YouNegotiate\Models\Interfaces;
 
 use BackedEnum;
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\Subclient;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -34,7 +34,6 @@ use Illuminate\Support\Carbon;
  * @property-read Company|null $company
  * @property-read Subclient|null $subclient
  */
-
 interface IMerchant
 {
 }

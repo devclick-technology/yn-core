@@ -2,10 +2,10 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use YouNegotiate\Models\AutomatedCampaign;
-use YouNegotiate\Models\CommunicationStatus;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\AutomatedCampaign;
+use YouNegotiate\Models\CommunicationStatus;
 
 /**
  * @property int $id

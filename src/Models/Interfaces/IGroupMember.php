@@ -2,8 +2,8 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use YouNegotiate\Models\Consumer;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\Consumer;
 
 /**
  * @property int $id
@@ -13,7 +13,6 @@ use Illuminate\Support\Carbon;
  * @property Carbon|null $updated_at
  * @property-read Consumer|null $consumer
  */
-
 interface IGroupMember
 {
 }

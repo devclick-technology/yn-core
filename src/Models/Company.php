@@ -12,7 +12,8 @@ use YouNegotiate\Models\Interfaces\ICompany;
 
 class Company extends BaseModel implements ICompany
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory;
+    use SoftDeletes;
 
     public function terms_condition()
     {
@@ -251,7 +252,7 @@ class Company extends BaseModel implements ICompany
 
     public function fullYNURL()
     {
-        return 'https://'.$this->younegotiate_url.'.younegotiate.com';
+        return 'https://' . $this->younegotiate_url . '.younegotiate.com';
     }
 
     public function transaction()
@@ -289,7 +290,7 @@ class Company extends BaseModel implements ICompany
 
     public function communicationCharge($type, $from, $to)
     {
-        return $this->{$type.'_rate'} * $this->communicationCount($type, $from, $to);
+        return $this->{$type . '_rate'} * $this->communicationCount($type, $from, $to);
     }
 
     public function transactions($from, $to)

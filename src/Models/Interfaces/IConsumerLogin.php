@@ -21,7 +21,6 @@ use Illuminate\Support\Carbon;
  * @property string|null $dob
  * @property string|null $last_4_ssn
  */
-
 interface IConsumerLogin
 {
 }

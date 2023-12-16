@@ -5,14 +5,29 @@
     "license": "proprietary",
     "authors": [
         {
-            "name": "sagarnaliyapara",
+            "name": "Sagar Naliyapara",
             "email": "naliyaparaspn@gmail.com"
+        },
+        {
+            "name": "Utsav Somaiya",
+            "email": "utsavsomaiya4464@gmail.com"
+        },
+        {
+            "name": "Karan Bijvani",
+            "email": "karanbijvani@gmail.com"
+        },
+        {
+            "name": "Vadoliya Divyesh",
+            "email": "d.a.vadoliya@gmail.com"
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "illuminate/database": "^10.0",
-        "illuminate/notifications": "^10.37"
+        "illuminate/notifications": "^10.37",
+        "fakerphp/faker": "^1.23",
+        "illuminate/support": "^10.37",
+        "laravel/pint": "^1.13"
     },
     "autoload": {
         "psr-4": {

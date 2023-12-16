@@ -33,7 +33,6 @@ use Illuminate\Support\Carbon;
  * @property string|null $lanline_call_permission_input
  * @property string|null $usps_permission_input
  */
-
 interface IProfilePermission
 {
 }

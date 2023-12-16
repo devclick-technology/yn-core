@@ -2,10 +2,10 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
-use YouNegotiate\Models\Company;
-use YouNegotiate\Models\Subclient;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Models\Company;
+use YouNegotiate\Models\Subclient;
 
 /**
  * @property int $id
@@ -31,7 +31,6 @@ use Illuminate\Support\Carbon;
  * @property-read Subclient|null $subclient
  * @property-read User $user
  */
-
 interface IScheduleExport
 {
 }

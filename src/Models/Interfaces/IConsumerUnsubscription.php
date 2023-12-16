@@ -2,9 +2,9 @@
 
 namespace YouNegotiate\Models\Interfaces;
 
+use Illuminate\Support\Carbon;
 use YouNegotiate\Models\Company;
 use YouNegotiate\Models\Consumer;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -17,7 +17,6 @@ use Illuminate\Support\Carbon;
  * @property-read Company|null $Company
  * @property-read Consumer|null $Consumer
  */
-
 interface IConsumerUnsubscription
 {
 }

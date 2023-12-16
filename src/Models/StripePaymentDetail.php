@@ -7,7 +7,7 @@ use YouNegotiate\Models\Interfaces\IStripePaymentDetail;
 
 class StripePaymentDetail extends BaseModel implements IStripePaymentDetail
 {
-    Use SoftDeletes;
+    use SoftDeletes;
 
     protected $table = 'stripe_payment_detail';
 }

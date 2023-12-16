@@ -5,10 +5,11 @@ namespace YouNegotiate\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Log;
-use YouNegotiate\Models\Interfaces\IMerchant;
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
 use SoapClient;
+use throwable;
+use YouNegotiate\Models\Interfaces\IMerchant;
 
 class Merchant extends BaseModel implements IMerchant
 {
@@ -46,7 +47,7 @@ class Merchant extends BaseModel implements IMerchant
                 $merchantAuthentication->setName($this->authorize_login_id);
                 $merchantAuthentication->setTransactionKey($this->authorize_transaction_key);
 
-                $refId = 'ref'.time();
+                $refId = 'ref' . time();
                 // Set the transaction's refId
                 $request = new AnetAPI\AuthenticateTestRequest($merchantAuthentication);
                 $request->setMerchantAuthentication($merchantAuthentication);
@@ -61,7 +62,7 @@ class Merchant extends BaseModel implements IMerchant
                 } else {
                     return false;
                 }
-            } catch (\throwable $e) {
+            } catch (throwable $e) {
                 Log::channel('transaction_command')->error($e);
 
                 return false;
@@ -83,7 +84,7 @@ class Merchant extends BaseModel implements IMerchant
                 $details = $client->getAccountDetails($token);
 
                 return true;
-            } catch (\throwable $e) {
+            } catch (throwable $e) {
                 Log::channel('transaction_command')->error($e);
 
                 return false;
@@ -113,7 +114,7 @@ class Merchant extends BaseModel implements IMerchant
                 } else {
                     return false;
                 }
-            } catch (\throwable $e) {
+            } catch (throwable $e) {
                 Log::channel('transaction_command')->error($e);
 
                 return false;
@@ -121,7 +122,7 @@ class Merchant extends BaseModel implements IMerchant
         } elseif ($this->merchant_name == 'repay') {
             $curl = curl_init();
             curl_setopt_array($curl, [
-                CURLOPT_URL => 'https://'.$this->repay_pin.'.repay.io/checkout/merchant/api/v1/checkout',
+                CURLOPT_URL => 'https://' . $this->repay_pin . '.repay.io/checkout/merchant/api/v1/checkout',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -135,7 +136,7 @@ class Merchant extends BaseModel implements IMerchant
             }',
                 CURLOPT_HTTPHEADER => [
                     'Content-Type: application/json',
-                    'Authorization: apptoken '.$this->repay_key,
+                    'Authorization: apptoken ' . $this->repay_key,
                 ],
             ]);
 
@@ -169,9 +170,9 @@ class Merchant extends BaseModel implements IMerchant
     {
         $sourcekey = $key;
         // generate random seed value
-        $seed = time().rand();
+        $seed = time() . rand();
         // make hash value using sha1 function
-        $clear = $sourcekey.$seed.$pin;
+        $clear = $sourcekey . $seed . $pin;
         $hash = sha1($clear);
         // assembly ueSecurityToken as an array
         $token = [
