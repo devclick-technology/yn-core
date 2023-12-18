@@ -23,7 +23,9 @@ class Membership extends Model
     ];
 
     protected $casts = [
-        //        'frequency' => MembershipFrequency::class,
+        'frequency' => MembershipFrequency::class,
+        'status' => 'boolean',
+        'meta_data' => 'array',
     ];
 
     public function companiesMembership(): HasMany
