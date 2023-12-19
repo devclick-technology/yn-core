@@ -17,7 +17,7 @@ class Membership extends Model
         'description',
         'frequency',
         'upload_accounts_limit',
-        'fees',
+        'fee',
         'status',
         'meta_data',
     ];
