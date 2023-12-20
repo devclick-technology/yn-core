@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
-use throwable;
+use Throwable;
 use YouNegotiate\Models\Interfaces\IConsumer;
 
 class Consumer extends BaseModel implements IConsumer

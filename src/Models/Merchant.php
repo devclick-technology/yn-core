@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 use net\authorize\api\contract\v1 as AnetAPI;
 use net\authorize\api\controller as AnetController;
 use SoapClient;
-use throwable;
+use Throwable;
 use YouNegotiate\Models\Interfaces\IMerchant;
 
 class Merchant extends BaseModel implements IMerchant
