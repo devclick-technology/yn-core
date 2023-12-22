@@ -11,6 +11,11 @@ class Membership extends Model
 {
     use SoftDeletes;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'name',
         'price',
@@ -22,6 +27,11 @@ class Membership extends Model
         'meta_data',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
     protected $casts = [
         'frequency' => MembershipFrequency::class,
         'status' => 'boolean',
