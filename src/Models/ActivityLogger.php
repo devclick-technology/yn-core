@@ -4,7 +4,7 @@ namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ClientLog extends Model
+class ActivityLogger extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -14,7 +14,6 @@ class ClientLog extends Model
     protected $fillable = [
         'company_id',
         'user_id',
-        'consumer_id',
-        'user_activity_message',
+        'activity_message',
     ];
 }
