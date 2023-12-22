@@ -31,6 +31,7 @@ class MembershipTransaction extends Model
      */
     protected $casts = [
         'status' => MembershipTransactionStatus::class,
+        'response' => 'array',
     ];
 
     public function company(): BelongsTo
