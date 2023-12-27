@@ -3,6 +3,7 @@
 namespace YouNegotiate\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use YouNegotiate\Enums\MembershipFrequency;
@@ -41,5 +42,10 @@ class Membership extends Model
     public function companiesMembership(): HasMany
     {
         return $this->hasMany(CompanyMembership::class);
+    }
+
+    public function companies(): BelongsToMany
+    {
+        return $this->belongsToMany(Company::class, 'company_memberships');
     }
 }
