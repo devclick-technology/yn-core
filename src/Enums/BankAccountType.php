@@ -14,5 +14,5 @@ enum BankAccountType: string
     use SelectionBox;
 
     case CHECKING = 'checking';
-    case SAVING = 'saving';
+    case SAVINGS = 'savings';
 }
