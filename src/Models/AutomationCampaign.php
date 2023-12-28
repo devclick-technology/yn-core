@@ -25,7 +25,7 @@ class AutomationCampaign extends Model
         'hourly',
         'enabled',
         'start_at',
-        'last_send_at',
+        'last_sent_at',
     ];
 
     /**
