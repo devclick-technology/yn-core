@@ -8,12 +8,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use YouNegotiate\Enums\BankAccountType;
 use YouNegotiate\Models\Interfaces\ICompany;
 
 class Company extends BaseModel implements ICompany
 {
     use HasFactory;
     use SoftDeletes;
+
+    protected $casts = [
+        'bank_account_type' => BankAccountType::class,
+    ];
 
     public function terms_condition()
     {
