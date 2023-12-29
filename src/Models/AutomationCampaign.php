@@ -36,6 +36,7 @@ class AutomationCampaign extends Model
     protected $casts = [
         'frequency' => AutomationCampaignFrequency::class,
         'enabled' => 'boolean',
+        'last_sent_at' => 'datetime',
     ];
 
     public function startAt(): Attribute
