@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Carbon;
+use YouNegotiate\Enums\BankAccountType;
 use YouNegotiate\Models\Campaign;
 use YouNegotiate\Models\ClientApiKey;
 use YouNegotiate\Models\Company;
@@ -41,7 +42,7 @@ use YouNegotiate\Models\Transaction;
  * @property string|null $billing_city
  * @property string|null $billing_state
  * @property string|null $billing_zip
- * @property string|null $bank_account_type
+ * @property ?BankAccountType $bank_account_type
  * @property string|null $bank_routing_number
  * @property string|null $bank_account_number
  * @property string|null $billing_name
