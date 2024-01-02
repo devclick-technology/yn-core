@@ -2,7 +2,6 @@
 
 namespace YouNegotiate\Enums;
 
-
 use YouNegotiate\Enums\Traits\Names;
 use YouNegotiate\Enums\Traits\SelectionBox;
 use YouNegotiate\Enums\Traits\Values;
@@ -10,8 +9,8 @@ use YouNegotiate\Enums\Traits\Values;
 enum State: string
 {
     use Names;
-    use Values;
     use SelectionBox;
+    use Values;
 
     case ALABAMA = 'AL';
     case ALASKA = 'AK';
