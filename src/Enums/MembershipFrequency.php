@@ -15,4 +15,16 @@ enum MembershipFrequency: string
     case WEEKLY = 'weekly';
     case MONTHLY = 'monthly';
     case YEARLY = 'yearly';
+
+    /**
+     * @return array<string>
+     */
+    public static function orderByForMembershipSettings(): array
+    {
+        return [
+            self::WEEKLY->value,
+            self::MONTHLY->value,
+            self::YEARLY->value,
+        ];
+    }
 }
