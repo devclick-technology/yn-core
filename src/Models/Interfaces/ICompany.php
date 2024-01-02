@@ -79,7 +79,8 @@ use YouNegotiate\Models\Transaction;
  * @property float|null $custom_max_days_first_pay
  * @property int|null $is_deactive
  * @property float $licence_fees
- * @property string|null $tilled_account_id
+ * @property string|null $tilled_merchant_account_id
+ * @property string|null $tilled_customer_id
  * @property string $company_category
  * @property string $ssn
  * @property int|null $average_transaction_amount
